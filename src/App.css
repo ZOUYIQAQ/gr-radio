@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+/* 设置统一字体 */
+@font-face {
+    font-family: "ex";
+    src: url('../public/font/GenJyuuGothic-Normal-2.ttf') format('truetype');
+}
+* {
+    font-family: "ex";
+}
+#app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    /* background-color: #ba3d3d; */
+    /* border: 5px solid #000;
+    border-radius: 5px; */
+}
+#progress {
+    background-color: blue;
+    display: flex;
+    width: 70%;
+    height: 5px;
+    border-radius: 2px;
+}

@@ -1,0 +1,39 @@
+#headers {
+    height: 30px;
+    display: flex;
+    border-bottom: 2px solid #000;
+    -webkit-app-region: drag;
+    user-select: none;
+}
+#header-left {
+    display: flex;
+    justify-content: start;
+    /* background-color: #661313; */
+    width: 50%;
+}
+#app_logo{
+    margin-top: 3px;
+    transform: scale(0.8);
+}
+#header-right {
+    display: flex;
+    justify-content: end;
+    /* background-color: #191eaf; */
+    width: 50%;
+}
+.ico {
+    -webkit-app-region: no-drag;
+    display: flex;
+    height: 100%;
+    aspect-ratio: 1/1;
+    margin-left: 5px;
+}
+.ico > img {
+    transform: scale(0.5);
+}
+.ico:hover {
+    background-color: #00000077;
+}
+#close:hover {
+    background-color: #ff0000ac;
+}
