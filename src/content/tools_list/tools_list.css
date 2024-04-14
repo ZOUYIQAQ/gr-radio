@@ -1,13 +1,15 @@
 #tool_list {
     width: 15vw;
     height: 100%;
-    border-right: 3px solid #000;
+    /* border-right: 3px solid #000; */
     display: flex;
     align-self: center;
     justify-content: center;
     transition: width 0.5s;
     overflow: hidden;
     white-space: nowrap;
+    background-color: #FFD4D4;
+    color: #001524;
 }
 .hidder_tool_list {
     width: 0px !important;
@@ -20,14 +22,20 @@
     justify-self: start;
     justify-content: start;
     user-select: none;
-    margin-top: 2vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
     font-size: 1.1em;
-    /* white-space: pre-wrap; */
-    /* border-bottom: 2px solid #000; */
+    width: 15vw;
+    padding-left: 30%;
+}
+.tool:hover {
+    background-color: #E192A2;
+    color: #7f425f;
 }
 #hidden_tools_button {
     height: 100%;
-    width: 4.5vw;
+    /* width: 4.5vw; */
+    width: 40px;
     display: flex;
     justify-content: start;
     align-self: start;
@@ -37,13 +45,18 @@
     margin-top: 10px;
     display: flex;
     justify-content: center;
-    background-color: #04ff29;
+    background-color: #FFD4D4;
     width: 100%;
-    height: 15%;
+    /* height: 15%; */
+    height: 80px;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
 }
 #hidden_tools_button_div > h2 {
     display: flex;
     align-self: center;
+    color: #CE7E96;
+}
+#hidden_tools_button_div:hover {
+    background-color: #E192A2;
 }

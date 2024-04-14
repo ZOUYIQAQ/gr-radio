@@ -5,6 +5,7 @@ import Voice from './voice/voice.js';
 function App() {
   return (
     <div id="app">
+      <div id="background"></div>
       <Headers />
       <Content />
       <div id="progress"></div>

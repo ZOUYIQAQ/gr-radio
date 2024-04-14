@@ -15,14 +15,26 @@
     flex-direction: column;
     height: 100vh;
     width: 100vw;
-    /* background-color: #ba3d3d; */
-    /* border: 5px solid #000;
-    border-radius: 5px; */
+    background-color: #FFFFE8;
 }
 #progress {
-    background-color: blue;
+    background-color: #FEBBCC;
     display: flex;
     width: 70%;
-    height: 5px;
+    height: 7px;
     border-radius: 2px;
+    transition: height 0.3s;
+}
+#progress:hover {
+    height: 15px;
+}
+#background {
+    z-index: -9999;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    /* background-image: url('../public/img/ex.png'); */
+    background-size: cover;
+    background-position: center;
+    filter: blur(2px);
 }

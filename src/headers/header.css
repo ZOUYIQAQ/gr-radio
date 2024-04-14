@@ -1,14 +1,13 @@
 #headers {
     height: 30px;
     display: flex;
-    border-bottom: 2px solid #000;
     -webkit-app-region: drag;
     user-select: none;
+    background-color: #FFD4D4;
 }
 #header-left {
     display: flex;
     justify-content: start;
-    /* background-color: #661313; */
     width: 50%;
 }
 #app_logo{
@@ -18,7 +17,6 @@
 #header-right {
     display: flex;
     justify-content: end;
-    /* background-color: #191eaf; */
     width: 50%;
 }
 .ico {
@@ -32,8 +30,8 @@
     transform: scale(0.5);
 }
 .ico:hover {
-    background-color: #00000077;
+    background-color: #E192A2;
 }
 #close:hover {
-    background-color: #ff0000ac;
+    background-color: #E72929;
 }
