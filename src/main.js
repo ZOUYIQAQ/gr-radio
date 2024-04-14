@@ -63,3 +63,7 @@ ipcMain.on('windowManage', (event, windowName, fuc) => {
         break
     }
 })
+// 获取窗口是否最大化
+ipcMain.on('isMaximized', (event, windowName) => {
+  event.returnValue = windows[windowName].isMaximized()
+})

@@ -4,4 +4,8 @@ contextBridge.exposeInMainWorld('electron', {
     windowManage: (windowName, fuc)=>{
         ipcRenderer.send('windowManage', windowName, fuc)
     },
+    // 获取窗口是否最大化
+    isMaximized: (windowName)=>{
+        return ipcRenderer.sendSync('isMaximized', windowName)
+    }
 })

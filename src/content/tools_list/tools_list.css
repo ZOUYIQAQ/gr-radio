@@ -1,0 +1,49 @@
+#tool_list {
+    width: 15vw;
+    height: 100%;
+    border-right: 3px solid #000;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    transition: width 0.5s;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.hidder_tool_list {
+    width: 0px !important;
+}
+#tool_list_content {
+    margin-top: 10vh;
+}
+.tool {
+    display: flex;
+    justify-self: start;
+    justify-content: start;
+    user-select: none;
+    margin-top: 2vh;
+    font-size: 1.1em;
+    /* white-space: pre-wrap; */
+    /* border-bottom: 2px solid #000; */
+}
+#hidden_tools_button {
+    height: 100%;
+    width: 4.5vw;
+    display: flex;
+    justify-content: start;
+    align-self: start;
+    user-select: none;
+}
+#hidden_tools_button_div {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    background-color: #04ff29;
+    width: 100%;
+    height: 15%;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+#hidden_tools_button_div > h2 {
+    display: flex;
+    align-self: center;
+}
