@@ -1,10 +1,15 @@
 import './homepage.css'
+import add_star_listener from './star_vfx/star_vfx'
+import add_love_listener from './love_vfx/love_vfx'
+const appInitialized = window.electron.appInitialized
+appInitialized(add_star_listener)
+appInitialized(add_love_listener)
 // 星星列表
 function StarList() {
     const star_img = 'img/icons8-nostar-50.png'
     let stars = []
     for (let i = 0; i < 5; i++) {
-        stars.push(<img className="star" src={star_img} alt="" key={i}></img>)
+        stars.push(<img className="star" src={star_img} alt="" key={i} vfx={i}></img>)
     }
     return stars
 }
