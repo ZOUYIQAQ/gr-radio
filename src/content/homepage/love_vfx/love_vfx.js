@@ -1,11 +1,11 @@
-const love_img = 'img/icons8-love-24.png'
-const no_love_img = 'img/icons8-nolove-24.png'
 const saveData = window.electron.saveData
 const getData = window.electron.getData
 const love_data_name = 'love_data'
 // 改变心心状态
 function change_love(mode) {
-    const love =  document.querySelector('.love')
+    const love_img = 'img/icons8-love-24.png'
+    const no_love_img = 'img/icons8-nolove-24.png'
+    const love = document.querySelector('.love')
     switch (mode) {
         case 'love':
             love.src = love_img

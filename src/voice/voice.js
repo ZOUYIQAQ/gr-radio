@@ -1,4 +1,7 @@
 import './voice.css'
+import init_voice_vfx from './voice_vfx/voice_vfx'
+const appInitialized = window.electron.appInitialized
+appInitialized(init_voice_vfx)
 function Voice() {
     return (
         <div id="time">
