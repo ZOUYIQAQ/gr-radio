@@ -1,8 +1,10 @@
 import './voice.css'
 import init_voice_vfx from './voice_vfx/voice_vfx'
-const appInitialized = window.electron.appInitialized
-appInitialized(init_voice_vfx)
+import React, { useEffect } from 'react';
 function Voice() {
+    useEffect(()=>{
+        init_voice_vfx()
+    }, [])
     return (
         <div id="time">
             {/* <!-- 声音 --> */}

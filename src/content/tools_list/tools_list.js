@@ -1,4 +1,19 @@
 import './tools_list.css'
+import Routers from '../route/route'
+// 选择对应功能函数
+function choice_tool(id){
+    let fuc = null
+    const router = Routers()
+    if (id === 'user') fuc = null
+    else if (id === 'radio') fuc = router.home
+    else if (id === 'collect') fuc = router.collect
+    else if (id === 'playlist') fuc = router.playlist
+    else if (id === 'news') fuc = router.news
+    else if (id === 'comment') fuc = router.comment
+    else if (id === 'setting') fuc = router.setting
+    else fuc = null
+    return fuc
+}
 // 功能列表
 function ToolList() {
     const tools_name = [
@@ -11,7 +26,7 @@ function ToolList() {
         { 'id': 'setting', 'text': '设置', 'key': 6 }
     ]
     const tools = tools_name.map((tool) => {
-        return <div id={tool['id']} className="tool" key={tool['key']}>{tool.text}</div>
+        return <div onClick={choice_tool(tool['id'])} id={tool['id']} className="tool" key={tool['key']}>{tool.text}</div>
     })
     return tools
 }

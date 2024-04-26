@@ -1,12 +1,32 @@
 import './content.css'
 import ToolModule from './tools_list/tools_list'
 import Homepage from './homepage/homepage'
+import React from "react";
+import SettingsPage from './settings/settings'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { CSSTransition, SwitchTransition, } from 'react-transition-group';
+import { useLocation } from 'react-router-dom';
+
 // 内容
 function Content() {
+    const nodeRef = React.useRef();
+    const location = useLocation();
     return (
         <div id="content">
             <ToolModule />
-            <Homepage />
+            <SwitchTransition>
+                <CSSTransition key={location.key} classNames="fade" timeout={300}>
+                    <Routes location={location}>
+                        {/* 默认显示主页 */}
+                        <Route index element={<Homepage />} />
+                        {/* 播放主页 */}
+                        <Route path="/homepage" element={<Homepage />} />
+                        {/* 设置页面 */}
+                        <Route path="/setting" element={<SettingsPage />} />
+                    </Routes>
+                </CSSTransition>
+            </SwitchTransition>
+            {/* <Homepage /> */}
         </div>
     )
 }

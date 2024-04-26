@@ -23,5 +23,15 @@ contextBridge.exposeInMainWorld('electron', {
     // 读取本地数据
     getData: (key, defaultValue=null)=>{
         return store.get(key, defaultValue)
-    }
+    },
+    // 音乐数据改变
+    changeMusicData: ()=>{
+        ipcRenderer.send('change_music')
+    },
+    // 音乐数据改变回调函数
+    onChangeMusicData: (callback)=>{
+        ipcRenderer.on('change_music', ()=>{
+            callback()
+        })
+    },
 })

@@ -1,9 +1,9 @@
 import './homepage.css'
 import add_star_listener from './star_vfx/star_vfx'
 import add_love_listener from './love_vfx/love_vfx'
-const appInitialized = window.electron.appInitialized
-appInitialized(add_star_listener)
-appInitialized(add_love_listener)
+import add_play_listener from './play_vfx/play_vfx'
+import React, { useEffect } from 'react';
+import change_music_data from './homepage_change'
 // 星星列表
 function StarList() {
     const star_img = 'img/icons8-nostar-50.png'
@@ -14,12 +14,21 @@ function StarList() {
     return stars
 }
 function Homepage() {
+    // 页面初始化
+    useEffect(() => {
+        add_love_listener()
+        add_play_listener()
+        add_star_listener()
+        change_music_data()
+    }, [])
     return (
-        <>
-        <div id="content_left">
+        <div className='homepage'>
+            <div id="content_left">
                 {/* <!-- 音乐封面 --> */}
                 <div id="cover">
-                    <img id='pause_img' src='/img/icons8-play-100.png' alt=''></img>
+                    <div id='player' className='play_style'>
+
+                    </div>
                     <img id="cover_img" src="/img/ex.png" alt=""></img>
                 </div>
             </div>
@@ -40,7 +49,7 @@ function Homepage() {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 export default Homepage

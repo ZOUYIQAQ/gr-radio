@@ -16,6 +16,7 @@
     height: 100vh;
     width: 100vw;
     background-color: #FFFFE8;
+    overflow: hidden;
 }
 #progress {
     background-color: #FEBBCC;
@@ -24,6 +25,7 @@
     height: 7px;
     border-radius: 2px;
     transition: height 0.3s;
+    z-index: 9999;
 }
 #progress:hover {
     height: 15px;

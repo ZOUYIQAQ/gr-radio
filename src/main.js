@@ -32,6 +32,10 @@ function createWindow() {
   windows.mainWindow.webContents.on('ready-to-show', () => {
     windows.mainWindow.webContents.send('appInitialized')
   })
+  // 监听并响应音乐数据改变
+  ipcMain.on('change_music', () => {
+    windows.mainWindow.webContents.send('change_music')
+  })
 }
 
 app.whenReady().then(createWindow);

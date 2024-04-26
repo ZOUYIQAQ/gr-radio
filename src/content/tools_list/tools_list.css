@@ -1,23 +1,26 @@
 #tool_list {
-    width: 15vw;
+    width: 125px;
+    min-width: 125px;
     height: 100%;
     /* border-right: 3px solid #000; */
     display: flex;
     align-self: center;
     justify-content: center;
-    transition: width 0.5s;
+    transition: width 0.5s, min-width 0.5s;
     overflow: hidden;
     white-space: nowrap;
     background-color: #FFD4D4;
     color: #001524;
 }
 .hidder_tool_list {
-    width: 0px !important;
+    width: 0 !important;
+    min-width: 0px !important;
 }
 #tool_list_content {
     margin-top: 10vh;
 }
 .tool {
+    left: 0;
     display: flex;
     justify-self: start;
     justify-content: start;
@@ -25,8 +28,8 @@
     padding-top: 2vh;
     padding-bottom: 2vh;
     font-size: 1.1em;
-    width: 15vw;
-    padding-left: 30%;
+    width: 150px;
+    padding-left: 100px;
 }
 .tool:hover {
     background-color: #E192A2;
@@ -34,8 +37,8 @@
 }
 #hidden_tools_button {
     height: 100%;
-    /* width: 4.5vw; */
-    width: 40px;
+    min-width: 40px;
+    max-width: 40px;
     display: flex;
     justify-content: start;
     align-self: start;
