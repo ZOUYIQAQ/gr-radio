@@ -37,18 +37,22 @@ function close() {
 }
 // 保存数据
 async function save(dict_data) {
-    console.log('开始保存数据')
-    // 判断是否已经保存过
-    const loc_id = JSON.parse(getData(data_name, null))?.songid
-    if (loc_id === dict_data.songid) return
-    console.log('没有保存过')
+    const loc_data = JSON.parse(getData(data_name, null))
+    dict_data.img = loc_data?.img
+    let json_data = JSON.stringify(dict_data)
+    // 先更新除图片外的数据
+    saveData(data_name, json_data)
+    console.log('基础数据已保存')
+    send_change()
+     // 判断是否已经保存过
+    if (loc_data?.songid === dict_data.songid) return
     // 获取图片base64后保存
     const img = await img_to_base64(dict_data.albumart)
     if (!img) return
     dict_data.img = img
-    const json_data = JSON.stringify(dict_data)
+    json_data = JSON.stringify(dict_data)
     saveData(data_name, json_data)
-    console.log('数据已保存')
+    console.log('包含图片的完整数据已保存')
     // 发送数据改变通知
     send_change()
 }
@@ -61,7 +65,7 @@ async function img_to_base64(img_url) {
     const max_try = 5
     const img = await get(img_url, max_try)
     if (!img) return null
-    console.log('图片已下载')
+    console.log('图片已下载', img_url)
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.onload = () => {

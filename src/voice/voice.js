@@ -1,9 +1,13 @@
 import './voice.css'
 import init_voice_vfx from './voice_vfx/voice_vfx'
 import React, { useEffect } from 'react';
+import up_time_progess from './voice_change'
+let i_time_num = 0
 function Voice() {
     useEffect(()=>{
         init_voice_vfx()
+        clearInterval(i_time_num)
+        i_time_num = up_time_progess()
     }, [])
     return (
         <div id="time">
@@ -13,7 +17,7 @@ function Voice() {
                 <img className="voice" src="./img/icons8-中等音量-50.png" alt=''></img>
             </div>
             {/* <!-- 具体时长 --> */}
-            3:30/ 4:20
+            <p id='time_p'>3:30/ 4:20</p>
         </div>
     )
 }
