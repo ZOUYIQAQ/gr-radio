@@ -1,9 +1,10 @@
 import './homepage.css'
 import add_star_listener from './star_vfx/star_vfx'
 import add_love_listener from './love_vfx/love_vfx'
-import add_play_listener from './play_vfx/play_vfx'
+import init_play_vfx from './play_vfx/play_vfx'
 import React, { useEffect } from 'react';
 import change_music_data from './homepage_change'
+import init_palyer from './homepage_player'
 // 星星列表
 function StarList() {
     const star_img = 'img/icons8-nostar-50.png'
@@ -17,17 +18,17 @@ function Homepage() {
     // 页面初始化
     useEffect(() => {
         add_love_listener()
-        add_play_listener()
+        init_play_vfx()
         add_star_listener()
         change_music_data()
+        init_palyer()
     }, [])
     return (
         <div className='homepage'>
             <div id="content_left">
-                {/* <!-- 音乐封面 --> */}
                 <div id="cover">
-                    <div id='player' className='play_style'>
-
+                    <div id='player' className='pause_style'>
+                    {/* <!-- 音乐封面 --> */}
                     </div>
                     <img id="cover_img" src="/img/ex.png" alt=""></img>
                 </div>

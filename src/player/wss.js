@@ -33,7 +33,8 @@ function onmessage_callback(event) {
 // 关闭连接
 function close() {
     console.log('连接关闭')
-    wss.close()
+    // wss.close()
+    start()
 }
 // 保存数据
 async function save(dict_data) {

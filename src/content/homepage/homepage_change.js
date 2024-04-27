@@ -1,5 +1,4 @@
 const onChangeMusicData = window.electron.onChangeMusicData
-// const saveData = window.electron.saveData
 const getData = window.electron.getData
 const data_name = 'song_data'
 // 改变图片

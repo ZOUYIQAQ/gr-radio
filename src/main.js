@@ -36,6 +36,14 @@ function createWindow() {
   ipcMain.on('change_music', () => {
     windows.mainWindow.webContents.send('change_music')
   })
+  // 监听并响应音乐播放状态改变
+  ipcMain.on('change_play_status', (event, mode) => {
+    windows.mainWindow.webContents.send('change_play_status', mode)
+  })
+  // 监听并响应音乐声音大小改变
+  ipcMain.on('change_volume', (event, volume) => {
+    windows.mainWindow.webContents.send('change_volume', volume)
+  })
 }
 
 app.whenReady().then(createWindow);

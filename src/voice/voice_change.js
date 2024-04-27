@@ -1,59 +1,31 @@
-// const saveData = window.electron.saveData
-const getData = window.electron.getData
-const onChangeMusicData = window.electron.onChangeMusicData
-const data_name = 'song_data'
-// 歌曲总时长
-let all_time = 0
-// 已播放时长
-let current_time = 0
-// 更改时间
-function change_time_doc(time_str){
-    const time_doc = document.querySelector('#time_p')
-    time_doc.innerText = time_str
+const changeMusicVolume = window.electron.changeMusicVolume
+const onChangeMusicPlayStatus = window.electron.onChangeMusicPlayStatus
+let is_mouse_down = false
+// 改变音乐音量
+function change_music_volume(volume) {
+    // 统一处理音量只传递小数
+    volume = volume / 100
+    // 指数化运算, 便于选择更小的音量
+    volume = Math.pow(volume, 2)
+    changeMusicVolume(volume)
 }
-// 更改进度
-function change_progress_doc(progress_num){
-    const progress = document.querySelector('#progress')
-    progress.style.width = progress_num * 100 + '%'
+// 获取声音进度条数字
+function get_voice() {
+    const voice_input = document.querySelector('.voice_input')
+    const volume = 100 - voice_input.value
+    return volume
 }
-// 获取进度
-function get_time_str(){
-    const all_m_time_str = String(parseInt(all_time / 60))
-    let all_s_time_str = String(all_time - all_m_time_str * 60)
-    const current_m_time_str = String(parseInt(current_time / 60))
-    let current_s_time_str = String(current_time - current_m_time_str * 60)
-    if (all_s_time_str.length <= 1) all_s_time_str = '0' + all_s_time_str
-    if (current_s_time_str.length <= 1) current_s_time_str = '0' + current_s_time_str
-    return `${current_m_time_str}:${current_s_time_str} / ${all_m_time_str}:${all_s_time_str}`
-
+// 声音进度条改变回调函数
+function voice_change() {
+    if (!is_mouse_down) return
+    change_music_volume(get_voice())
 }
-// 获取时间
-function get_progress_num(){
-    return current_time/all_time
+// 初始化声音大小相关
+function init_voice() {
+    onChangeMusicPlayStatus(change_music_volume, get_voice)
+    const voice_input = document.querySelector('.voice_input')
+    voice_input.addEventListener('mousedown', ()=>{ is_mouse_down = true })
+    voice_input.addEventListener('mouseup', ()=>{ is_mouse_down = false })
+    voice_input.addEventListener('mousemove', voice_change)
 }
-// 从网络更新时间
-function up_time(){
-    const json_data = getData(data_name, null)
-    if (!json_data) return
-    const dict_data = JSON.parse(json_data)
-    all_time = dict_data.duration
-    current_time = all_time - dict_data.remaining
-}
-// 统一更新时间和进度
-function change_all() {
-    change_progress_doc(get_progress_num())
-    change_time_doc(get_time_str())
-}
-// 定时更新使用函数
-function timer_fuc(){
-    if (current_time < all_time) current_time ++
-    change_all()
-}
-// 初始化
-function up_time_progess(){
-    up_time()
-    change_all()
-    onChangeMusicData(up_time)
-    return setInterval(timer_fuc, 1000)
-}
-export default up_time_progess
+export default init_voice
