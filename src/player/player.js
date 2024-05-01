@@ -29,7 +29,7 @@ function creater_player() {
     })
     sound.on('loaderror', () => {
         console.log('加载失败, 重新加载')
-        sound.unload()
+        sound?.unload()
         creater_player()
     })
     sound.on('play', () => { is_playing = true })
