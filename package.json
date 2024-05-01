@@ -38,8 +38,10 @@
     ]
   },
   "devDependencies": {
+    "customize-cra": "^1.0.0",
     "electron": "^29.3.0",
     "electron-store": "^8.2.0",
+    "hard-source-webpack-plugin": "^0.13.1",
     "howler": "^2.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
