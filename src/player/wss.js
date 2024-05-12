@@ -78,12 +78,16 @@ async function img_to_base64(img_url) {
     });
 }
 // 获取网络图片
-async function get(url, _num) {
-    console.log('尝试下载图片', url)
-    if (_num <= 0) return null
-    const response = await fetch(url)
-    if (!response.ok) return get(url, _num-1)
-    const data = await response.blob()
-    return data
+async function get(url, _num=5) {
+    try{
+        console.log('尝试下载图片', url)
+        if (_num <= 0) return null
+        const response = await fetch(url)
+        if (!response.ok) return get(url, _num-1)
+        const data = await response.blob()
+        return data
+    }catch(err) {
+        return get(url, _num-1)
+    }
 }
 export default start

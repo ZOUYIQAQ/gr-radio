@@ -1,6 +1,8 @@
-const saveData = window.electron.saveData
+import request_star from './request_star.js'
+const onChangeMusicData = window.electron.onChangeMusicData
 const getData = window.electron.getData
-const star_data_name = 'star_data'
+const data_name = 'song_data'
+let now_start = -1
 // 点亮几颗星星
 function star_light(_num) {
     const star_img = 'img/icons8-star-50.png'
@@ -20,18 +22,35 @@ function only_touch(event) {
 }
 // 离开星星回调函数
 function leave_star(event) {
-    const loc_star_vfx = getData(star_data_name, -1)
-    star_light(loc_star_vfx)
+    star_light(now_start)
 }
 // 点击星星回调函数
-function click_star(event) {
+async function click_star(event) {
     const now_star_vfx = parseInt(event.target.getAttribute('vfx'))
-    saveData(star_data_name, now_star_vfx)
+    now_start = now_star_vfx
+    const messages = await request_star(now_star_vfx)
+    if (messages !== '感谢您的评分！') {
+        now_start = -1
+        star_light(-1)
+    }
+}
+// 歌曲是否确实发生了变化
+function music_is_change() {
+    const loc_data = getData(data_name)
+    if (loc_data.img) return false
+    else return true
+}
+// 清空星星
+function clear_star() {
+    if (!music_is_change()) return
+    now_start = -1
+    star_light(-1)
 }
 // 统一绑定事件
 function add_star_listener() {
     // 初始化星星
-    saveData(star_data_name, -1)
+    now_start = -1
+    onChangeMusicData(clear_star)
     const star_list = document.querySelectorAll('.star')
     for (const star of star_list) {
         star.addEventListener('mouseover', only_touch)

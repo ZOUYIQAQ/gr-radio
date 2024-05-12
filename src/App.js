@@ -15,6 +15,7 @@ function App() {
   return (
     <Router>
       <div id="app">
+        <audio src='' crossOrigin='anonymous' id='gr_radio'></audio>
         <div id="background"></div>
         <Headers />
         <Content />

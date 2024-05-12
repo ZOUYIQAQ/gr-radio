@@ -1,10 +1,12 @@
 import './tools_list.css'
 import Routers from '../route/route'
+import {init_login_doc, init_user_btn} from './login/login_doc'
+import React, { useEffect } from 'react';
 // 选择对应功能函数
 function choice_tool(id){
     let fuc = null
     const router = Routers()
-    if (id === 'user') fuc = null
+    if (id === 'user') fuc = init_login_doc
     else if (id === 'radio') fuc = router.home
     else if (id === 'collect') fuc = router.collect
     else if (id === 'playlist') fuc = router.playlist
@@ -44,6 +46,9 @@ function hidden_tools_list() {
     }
 }
 function ToolModule() {
+    useEffect(()=>{
+        init_user_btn()
+    }, [])
     return (
         <>
             <div id="tool_list">
@@ -53,7 +58,7 @@ function ToolModule() {
             </div>
             <div id="hidden_tools_button">
                 <div id='hidden_tools_button_div' onClick={hidden_tools_list}>
-                    <h2>{'>'}</h2>
+                    <h2>{'<'}</h2>
                 </div>
             </div>
         </>

@@ -1,0 +1,116 @@
+#login_box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 290px;
+    height: 300px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#login_box::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 290px;
+    height: 300px;
+    background-color: rgba(255, 221, 204, 0.5);
+    backdrop-filter: blur(20px);
+    z-index: -1;
+}
+
+#login_headers {
+    user-select: none;
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+#login_input_list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.login_input {
+    margin-top: 0px;
+    margin: 7px;
+    border: none;
+    height: 30px;
+    width: 190px;
+    border-radius: 50px;
+    padding-left: 10px;
+}
+.login_input:focus {
+    background-color: rgba(255, 255, 255, 0.5);
+    outline: none;
+    border: none;
+}
+#login_btn {
+    width: 200px;
+    height: 30px;
+    border: none;
+    border-radius: 50px;
+}
+
+#login_other {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#login_other_left,
+#login_other_right {
+    width: 75px;
+    height: 25px;
+    border: none;
+    border-radius: 50px;
+    margin-bottom: 50px;
+}
+
+#login_other_left {
+    margin-left: 22px;
+}
+
+#login_other_right {
+    margin-right: 22px;
+}
+
+#remember_box {
+    user-select: none;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#remember {
+    margin-left: 5px;
+}
+.login_botton {
+    background-color: #FFFFE8;
+    transition: background-color 0s;
+}
+.login_botton:hover {
+    background-color: #FFFFE8;
+}
+.login_botton:active {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+#overlay {
+    top: 0;
+    z-index: 9999;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+}

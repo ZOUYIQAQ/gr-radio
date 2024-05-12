@@ -1,4 +1,4 @@
-const {contextBridge, ipcRenderer, } = require('electron');
+const {contextBridge, ipcRenderer, shell, } = require('electron');
 const Store = require('electron-store')
 const store = new Store()
 contextBridge.exposeInMainWorld('electron', {
@@ -56,4 +56,8 @@ contextBridge.exposeInMainWorld('electron', {
             callback(volume)
         })
     },
+    // 在默认浏览器中打开链接
+    openLink: (link)=>{
+        shell.openExternal(link)
+    }
 })

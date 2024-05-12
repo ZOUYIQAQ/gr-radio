@@ -4,6 +4,7 @@
     -webkit-app-region: drag;
     user-select: none;
     background-color: #FFD4D4;
+    backdrop-filter: blur(20px) brightness(0.8);
     z-index: 99999;
 }
 #header-left {
@@ -26,13 +27,14 @@
     height: 100%;
     aspect-ratio: 1/1;
     margin-left: 5px;
+    transition: background-color 0s;
 }
 .ico > img {
     transform: scale(0.5);
 }
 .ico:hover {
-    background-color: #E192A2;
+    background-color: rgba(0, 0, 0, 0.1);
 }
 #close:hover {
-    background-color: #E72929;
+    background-color: #ff2828;
 }

@@ -3,8 +3,9 @@ import add_star_listener from './star_vfx/star_vfx'
 import add_love_listener from './love_vfx/love_vfx'
 import init_play_vfx from './play_vfx/play_vfx'
 import React, { useEffect } from 'react';
-import change_music_data from './homepage_change'
-import init_palyer from './homepage_player'
+import change_music_data from './play_vfx/homepage_change'
+import init_palyer from './play_vfx/homepage_player'
+import init_color from '../../colour/colour'
 // 星星列表
 function StarList() {
     const star_img = 'img/icons8-nostar-50.png'
@@ -22,10 +23,12 @@ function Homepage() {
         add_star_listener()
         change_music_data()
         init_palyer()
+        init_color()
     }, [])
     return (
         <div className='homepage'>
             <div id="content_left">
+                <canvas id='canvas'></canvas>
                 <div id="cover">
                     <div id='player' className='pause_style'>
                     {/* <!-- 音乐封面 --> */}
@@ -36,7 +39,7 @@ function Homepage() {
             <div id="content_right">
                 {/* <!-- 歌曲信息 --> */}
                 <div id="information">
-                    <h2 className='inf_text' id="name">歌曲名称</h2>
+                    <p className='inf_text' id="name">歌曲名称</p>
                     <p className='inf_text' id="singer">歌手</p>
                     <p className='inf_text' id="album">专辑</p>
                     <p className='inf_text' id="publisher">发行商</p>
