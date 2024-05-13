@@ -1,4 +1,5 @@
 const getData = window.electron.getData
+// 获取song_id
 const data_name = 'song_data'
 const messages = {
     "1": "您未登录。",
@@ -32,7 +33,6 @@ async function get(star_num) {
 async function request_star(star_num) {
     star_num += 1
     const message = await get(star_num)
-    alert(message)
     return message
 }
 export default request_star

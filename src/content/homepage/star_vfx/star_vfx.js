@@ -33,6 +33,7 @@ async function click_star(event) {
         now_start = -1
         star_light(-1)
     }
+    window.tips(messages)
 }
 // 歌曲是否确实发生了变化
 function music_is_change() {

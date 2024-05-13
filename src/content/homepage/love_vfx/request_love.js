@@ -61,7 +61,6 @@ async function love(is_true) {
     const response = await post(url, from_data)
     // 获取提示信息, 中文尚未完成
     const result = ex_get_message(response)
-    alert(result)
     return result
 }
 export default love

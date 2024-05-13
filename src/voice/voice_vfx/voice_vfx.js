@@ -13,7 +13,7 @@ function change_voice_img(num) {
     if (num >= 1 || num < 0) return
     if (num > 0.85) {
         voice_doc.src = big_img
-    }else if (num > 0.4) {
+    }else if (num > 0.3) {
         voice_doc.src = normal_img
     }else if (num > 0.1) {
         voice_doc.src = small_img

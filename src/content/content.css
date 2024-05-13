@@ -10,21 +10,47 @@
 .fade-enter {
     opacity: 0;
     transform: translateY(100%);
+    /* 添加遮罩样式 */
+    position: relative;
+    z-index: 2; /* 确保遮罩位于元素之上 */
+    background-color: rgba(0, 0, 0, 0); /* 透明背景色 */
+    overflow: hidden; /* 隐藏超出部分 */
 }
 
 .fade-enter-active {
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 500ms, transform 500ms;
+    /* 添加斜方向背景蔓延动画 */
+    background: linear-gradient(to top left, transparent 50%, rgba(0, 0, 0, 0.5) 50%);
+    background-size: 200% 200%;
+    animation: diagonal 1s linear forwards;
 }
 
 .fade-exit {
     opacity: 1;
     transform: translateY(0);
+    /* 添加遮罩样式 */
+    position: relative;
+    z-index: 2; /* 确保遮罩位于元素之上 */
+    background-color: rgba(0, 0, 0, 0); /* 透明背景色 */
+    overflow: hidden; /* 隐藏超出部分 */
 }
 
 .fade-exit-active {
     opacity: 0;
     transform: translateY(-100%);
-    transition: opacity 500ms, transform 500ms;
+    /* 添加斜方向背景蔓延动画 */
+    background: linear-gradient(to top left, transparent 50%, rgba(0, 0, 0, 0.5) 50%);
+    background-size: 200% 200%;
+    animation: diagonal 1s linear forwards;
 }
+
+@keyframes diagonal {
+    from {
+        background-position: 100% 0; /* 初始背景位置，右下角 */
+    }
+    to {
+        background-position: 0 100%; /* 结束背景位置，左上角 */
+    }
+}
+

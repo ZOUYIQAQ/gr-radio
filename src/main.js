@@ -1,4 +1,4 @@
-const { app, BrowserWindow, session } = require('electron');
+const { app, BrowserWindow, } = require('electron');
 const path = require('path');
 // 本地储存数据
 const Store = require('electron-store');

@@ -40,13 +40,14 @@ function remove_login_doc(event) {
     document.querySelector('#overlay').remove()
 }
 // 登录
-function login_btn_click() {
+async function login_btn_click() {
     const username = document.querySelector('#username').value
     const password = document.querySelector('#password').value
     const remember = document.querySelector('#remember').checked
-    if (!username) alert('请输入账号')
-    if (!password) alert('请输入密码')
-    login(username, password, remember)
+    if (!username) window.tips('请输入账号')
+    if (!password) window.tips('请输入密码')
+    const name = await login(username, password, remember)
+    window.tips('欢迎回来, '+name)
 }
 // 初始化用户名按钮
 export function init_user_btn() {
@@ -75,7 +76,7 @@ export function init_user_btn() {
 export function init_login_doc() {
     if (document.querySelector('#user').innerText === '退出登录') {
         logout()
-        alert("退出登录成功")
+        window.tips("退出登录成功")
         return
     }
     creact_login_doc()

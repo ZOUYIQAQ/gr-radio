@@ -1,0 +1,21 @@
+#tip_box {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: rgb(28, 28, 28);
+    color: rgb(222, 162, 51);
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 8px;
+    padding-bottom: 10px;
+    border-radius: 15px;
+    max-width: 90%;
+    min-width: 50px;
+    transition: bottom 0.35s cubic-bezier(0.385, 0.210, 0.865, 0.630), background-color 0.5s, color 0.5s;
+    z-index: 19999;
+}

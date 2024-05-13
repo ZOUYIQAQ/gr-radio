@@ -16,7 +16,9 @@ export async function login(user, password, remember) {
     })
     data = await response.json()
     if (data['error'] || !data) {
-        alert(data['passError']?data['passError']:'登录失败')
+        const up_gg = 'Incorrect username\/password'
+        const message = data['passError']?data['passError']:'登录失败(未知错误)'
+        if (message !== up_gg) window.tips(message)
         return
     }
     name = data['info'].match(/"Logged in as (.+)/)[1].split('"')[0]
@@ -24,6 +26,7 @@ export async function login(user, password, remember) {
     saveData('user_name', name)
     document.querySelector('#overlay')?.remove()
     saveData('is_out', false)
+    return name
 }
 // 退出的奴
 export async function logout() {

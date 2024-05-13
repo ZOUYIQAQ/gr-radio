@@ -48,6 +48,7 @@ async function click_love() {
             is_love = 'no_love'
         }
     }
+    window.tips(result)
 }
 // 歌曲是否确实发生了变化
 function music_is_change() {
