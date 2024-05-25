@@ -1,5 +1,4 @@
 import love from './request_love'
-const onChangeMusicData = window.electron.onChangeMusicData
 const getData = window.electron.getData
 const data_name = 'song_data'
 let is_love = 'no_love'
@@ -35,7 +34,7 @@ async function click_love() {
         change_love('no_love')
         is_love = 'no_love'
         result = await love(false)
-        if (result !== '成功') {
+        if (result !== '成功' && result !== 'Song is already added as a favorite') {
             change_love('love')
             is_love = 'love'
         }
@@ -43,7 +42,7 @@ async function click_love() {
         change_love('love')
         is_love = 'love'
         result = await love(true)
-        if (result !== '成功') {
+        if (result !== '成功' && result !== 'Song is already added as a favorite') {
             change_love('no_love')
             is_love = 'no_love'
         }
@@ -57,20 +56,19 @@ function music_is_change() {
     else return true
 }
 // 清空心心
-function clear_love() {
+export function clear_love() {
     if (!music_is_change()) return
+    const pathname = window.location.pathname
+    if (pathname !== '/' && pathname !== '/homepage') return
     change_love('no_love')
     is_love = 'no_love'
 }
 // 绑定心心事件
-function add_love_listener() {
+export function add_love_listener() {
     // 初始化心心
     is_love = 'no_love'
-    onChangeMusicData(clear_love)
     const love = document.querySelector('.love')
     love.addEventListener('mouseover', touch_love)
     love.addEventListener('mouseout', leave_love)
     love.addEventListener('click', click_love)
 }
-
-export default add_love_listener

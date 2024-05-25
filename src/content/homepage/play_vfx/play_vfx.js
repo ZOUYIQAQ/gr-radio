@@ -4,33 +4,24 @@ const is_playing_data_name = 'is_playing'
 // 变化样式
 function change_style(mode) {
     const player = document.querySelector('#player')
-    if (mode === '播放') {
-        saveData(is_playing_data_name, true)
-        player.setAttribute('class','play_style')
-    }else if (mode === '暂停') {
-        saveData(is_playing_data_name, false)
-        player.setAttribute('class','pause_style')
+    const player_icon = document.querySelector('#player_icon')
+    if (mode === 'play') {
+        saveData(is_playing_data_name, 'play')
+        player?.setAttribute('class','play_style')
+        player_icon?.setAttribute('src', './img/icons8-播放-100.png')
+    }else if (mode === 'pause') {
+        saveData(is_playing_data_name, 'pause')
+        player?.setAttribute('class','pause_style')
+        player_icon?.setAttribute('src', './img/icons8-暂停-100.png')
+    }else if (mode === 'stop') {
+        saveData(is_playing_data_name, 'stop')
+        player?.setAttribute('class','pause_style')
+        player_icon?.setAttribute('src', './img/icons8-停止-100.png')
     }
-}
-// 样式回调事件
-function change_style_callback(e) {
-    const player = e.target
-    const mode = player.getAttribute('class')
-    if (mode === 'play_style') {
-        change_style('暂停')
-    }else if (mode === 'pause_style') {
-        change_style('播放')
-    }
-}
-// 绑定事件
-function add_play_listener(){
-    const play_doc = document.querySelector('#player')
-    play_doc.addEventListener("click",change_style_callback, false)
 }
 // 初始化样式和事件
 function init_play_vfx() {
-    const mode = getData(is_playing_data_name, false) ? '播放' : '暂停'
+    const mode = getData(is_playing_data_name, 'stop')
     change_style(mode)
-    add_play_listener()
 }
-export default init_play_vfx
+export {init_play_vfx, change_style}

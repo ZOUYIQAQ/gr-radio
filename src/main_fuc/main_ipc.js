@@ -43,3 +43,7 @@ ipcMain.on('change_play_status', (event, mode) => {
 ipcMain.on('change_volume', (event, volume) => {
     windows.mainWindow.webContents.send('change_volume', volume)
 })
+// 监听并响应音乐收藏改变
+ipcMain.on('change_collect', () => {
+    windows.mainWindow.webContents.send('change_collect')
+})

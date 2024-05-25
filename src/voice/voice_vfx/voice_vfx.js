@@ -40,6 +40,7 @@ function voice_change(event) {
 // 初始化和绑定所有函数
 function init_voice_vfx() {
     set_voice(getData(voice_data_name, 100))
+    change_voice_img(get_voice())
     const voice_input = document.querySelector('.voice_input')
     voice_input.addEventListener('mousedown', ()=>{is_mouse_down = true})
     voice_input.addEventListener('mouseup', ()=>{

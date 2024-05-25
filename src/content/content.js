@@ -3,6 +3,8 @@ import ToolModule from './tools_list/tools_list'
 import Homepage from './homepage/homepage'
 import React from "react";
 import SettingsPage from './settings/settings'
+import CollectPage from './collect/collect'
+import AlbumPage from './album/album'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CSSTransition, SwitchTransition, } from 'react-transition-group';
 import { useLocation } from 'react-router-dom';
@@ -15,12 +17,16 @@ function Content() {
         <div id="content">
             <ToolModule />
             <SwitchTransition>
-                <CSSTransition key={location.key} classNames="fade" timeout={300}>
+                <CSSTransition key={location.key} classNames="fade" timeout={0}>
                     <Routes location={location}>
                         {/* 默认显示主页 */}
                         <Route index element={<Homepage />} />
                         {/* 播放主页 */}
                         <Route path="/homepage" element={<Homepage />} />
+                        {/* 收藏页面 */}
+                        <Route path="/collect" element={<CollectPage />} />
+                        {/* 专辑页面 */}
+                        <Route path="/playlist" element={<AlbumPage />} />
                         {/* 设置页面 */}
                         <Route path="/setting" element={<SettingsPage />} />
                     </Routes>

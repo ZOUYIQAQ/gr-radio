@@ -60,4 +60,14 @@ contextBridge.exposeInMainWorld('electron', {
     openLink: (link)=>{
         shell.openExternal(link)
     },
+    // 收藏数据改变
+    changeCollecteData: ()=>{
+        ipcRenderer.send('change_collect')
+    },
+    // 收藏数据改变回调函数
+    onChangeCollecteData: (callback)=>{
+        ipcRenderer.on('change_collect', ()=>{
+            callback()
+        })
+    }
 })

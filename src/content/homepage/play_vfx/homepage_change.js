@@ -1,4 +1,3 @@
-const onChangeMusicData = window.electron.onChangeMusicData
 const getData = window.electron.getData
 const data_name = 'song_data'
 // 改变图片
@@ -28,6 +27,8 @@ function changeCompany(company) {
 }
 // 改变所有
 function changeAll(data) {
+    const pathname = window.location.pathname
+    if (pathname !== '/' && pathname !== '/homepage') return
     changeImg(data.img)
     changeName(data.title)
     changeSinger(data.artist)
@@ -35,14 +36,12 @@ function changeAll(data) {
     changeCompany(data.circle)
 }
 // 获取数据
-function getDataFun() {
+export function getDataFun() {
     const json_data = getData(data_name, null)
     if (json_data === null) return
     changeAll(JSON.parse(json_data))
 }
 // 初始化
-function change_music_data() {
+export function change_music_data() {
     getDataFun()
-    onChangeMusicData(getDataFun)
 }
-export default change_music_data

@@ -1,7 +1,7 @@
 import './settings.css'
 function SettingsPage() {
     return (
-        <div>
+        <div id='settings'>
             这里是设置页面
         </div>
     )

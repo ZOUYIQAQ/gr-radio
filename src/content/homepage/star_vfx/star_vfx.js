@@ -1,5 +1,4 @@
 import request_star from './request_star.js'
-const onChangeMusicData = window.electron.onChangeMusicData
 const getData = window.electron.getData
 const data_name = 'song_data'
 let now_start = -1
@@ -42,16 +41,17 @@ function music_is_change() {
     else return true
 }
 // 清空星星
-function clear_star() {
+export function clear_star() {
     if (!music_is_change()) return
+    const pathname = window.location.pathname
+    if (pathname !== '/' && pathname !== '/homepage') return
     now_start = -1
     star_light(-1)
 }
 // 统一绑定事件
-function add_star_listener() {
+export function add_star_listener() {
     // 初始化星星
     now_start = -1
-    onChangeMusicData(clear_star)
     const star_list = document.querySelectorAll('.star')
     for (const star of star_list) {
         star.addEventListener('mouseover', only_touch)
@@ -59,4 +59,3 @@ function add_star_listener() {
         star.addEventListener('click', click_star)
     }
 }
-export default add_star_listener
