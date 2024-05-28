@@ -13,9 +13,13 @@ import {clear_star} from './content/homepage/star_vfx/star_vfx.js'
 import {getDataFun} from './content/homepage/play_vfx/homepage_change.js'
 import {init_row_count} from './content/collect/collect_vfx/collect_vfx.js'
 import {updata_collect_data} from './content/collect/collect.js'
+import {updata_album_data} from './content/album/album.js'
+import {up_news_data} from './content/news/news.js'
 const appInitialized = window.electron.appInitialized
 const onChangeMusicData = window.electron.onChangeMusicData
 const onChangeCollecteData = window.electron.onChangeCollecteData
+const onUpdateMusicAlbumId = window.electron.onUpdateMusicAlbumId
+const onUpdataNewsData = window.electron.onUpdataNewsData
 const saveData = window.electron.saveData
 const is_playing_data_name = 'is_playing'
 // 杂七杂八的初始化
@@ -29,7 +33,10 @@ appInitialized(onChangeMusicData, clear_love)
 appInitialized(onChangeMusicData, clear_star)
 appInitialized(onChangeMusicData, getDataFun)
 appInitialized(onChangeCollecteData, updata_collect_data)
+appInitialized(onUpdateMusicAlbumId, updata_album_data)
+appInitialized(onUpdataNewsData, up_news_data)
 function App() {
+  
   return (
     <Router>
       <div id="app">

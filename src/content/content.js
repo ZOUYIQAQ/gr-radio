@@ -5,6 +5,7 @@ import React from "react";
 import SettingsPage from './settings/settings'
 import CollectPage from './collect/collect'
 import AlbumPage from './album/album'
+import NewsPage from './news/news'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CSSTransition, SwitchTransition, } from 'react-transition-group';
 import { useLocation } from 'react-router-dom';
@@ -27,6 +28,8 @@ function Content() {
                         <Route path="/collect" element={<CollectPage />} />
                         {/* 专辑页面 */}
                         <Route path="/playlist" element={<AlbumPage />} />
+                        {/* 新闻页面 */}
+                        <Route path="/news" element={<NewsPage />} />
                         {/* 设置页面 */}
                         <Route path="/setting" element={<SettingsPage />} />
                     </Routes>

@@ -6,6 +6,7 @@ import React, { useEffect } from 'react';
 import {change_music_data} from './play_vfx/homepage_change'
 import init_palyer from './play_vfx/homepage_player'
 import {init_color} from '../../colour/colour'
+import init_change_album_id from './play_vfx/album_id_change'
 // 星星列表
 function StarList() {
     const star_img = 'img/icons8-nostar-50.png'
@@ -24,6 +25,7 @@ function Homepage() {
         change_music_data()
         init_palyer()
         init_color()
+        init_change_album_id()
     }, [])
     return (
         <div className='homepage'>

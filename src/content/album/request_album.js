@@ -1,9 +1,19 @@
+const albumDatabaseAdd = window.electron.albumDatabaseAdd
+const albumDatabaseGet = window.electron.albumDatabaseGet
+let is_ruquest_get = false
 // 请求数据
 async function get(url) {
+    if (is_ruquest_get) return null
+    is_ruquest_get = true
     try {
         const response = await fetch(url)
+        is_ruquest_get = false
         return response.text()
-    } catch { return null }
+    } catch { 
+        is_ruquest_get = false
+        window.tips('获取专辑数据失败')
+        return null 
+    }
 }
 // 将日期字符串转换为标准格式
 function parse_date_string(dateString) {
@@ -73,12 +83,16 @@ async function analyze(html_text) {
     const title = doc.querySelector('.content>.title').innerText.trim()
     // 制作团队
     const production_team = doc.querySelector('.subtitle>a').innerText.trim()
+    // 专辑封面
+    const cover = doc.querySelector('.image>img').src
     let other_datas = doc.querySelector('.content>p').innerHTML.trim()
     other_datas = other_datas.split('<br>').map(e => e.trim())
     // 专辑标题
     album_data['title'] = title
     // 制作团队
     album_data['production_team'] = production_team
+    // 专辑封面
+    album_data['cover_url'] = cover
     // 歌曲基础信息大杂烩
     for (let data of other_datas) {
         let [key, value] = data.split(': ')
@@ -94,7 +108,19 @@ async function analyze(html_text) {
 async function request_album(url) {
     const html_text = await get(url)
     if (!html_text) return
-    const album_data = await analyze(html_text)
+    let album_data = await analyze(html_text)
+    album_data['url'] = url
+    const song_id = url.match(/music\/album\/(\d+)/)[1]
+    albumDatabaseAdd(song_id, JSON.stringify(album_data))
     return album_data
 }
-await request_album('https://gensokyoradio.net/music/album/10008/')
+// 测试
+// await request_album('https://gensokyoradio.net/music/album/10008/')
+export default async function get_album_data(album_id) {
+    let data = await albumDatabaseGet(album_id)
+    if(data) data = JSON.parse(data)
+    const url = `https://gensokyoradio.net/music/album/${album_id}/`
+    if (!data) data = await request_album(url)
+    // console.log(data)
+    return data
+}

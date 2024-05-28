@@ -85,6 +85,7 @@ async function get_data() {
     const collect_data = analyze(html_text)
     saveData(data_name, JSON.stringify(collect_data))
     changeCollecteData()
+    // window.tips('收藏数据获取成功')
     // return collect_data
 }
 export default get_data

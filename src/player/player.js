@@ -17,6 +17,7 @@ function now_time() {
 function creater_player() {
     console.log('create player')
     audio.src = player_url_1
+    document.querySelector('audio').onerror = stop
 }
 // 播放
 function play() {
@@ -44,6 +45,7 @@ function pause() {
     console.log('pause')
     audio.pause()
     is_playing = false
+    document.querySelector('audio').onerror = null
 }
 // 停止
 function stop() {

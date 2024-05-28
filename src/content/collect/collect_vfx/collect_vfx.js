@@ -2,7 +2,7 @@
 export function get_row_count() {
     const collect_page = document.querySelector('#collect_page')
     const width = collect_page.offsetWidth
-    return parseInt((1.03 * width) / (250 + 0.03 * width))
+    return parseInt((1.03 * width) / (330 + 0.03 * width)) 
 }
 // 初始化页面动效
 export function init_row_count() {

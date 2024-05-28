@@ -1,3 +1,152 @@
 #albump_page{
+    z-index: 3;
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 20px;
+}
+#albump_data {
+    margin-left: 5vw;
+    display: flex;
+    height: 100%;
+    width: 30vw;
+    flex-direction: column;
+    border-radius: 20px;
+    z-index: 3;
+    align-items: center;
+    position: relative;
+}
+#albump_data::before {
+    content: '';
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+#albump_background{
+    z-index: -2;
+    position: absolute;
+    background-image: url('../../../public/img/ex.png');
+    filter: blur(30px);
+    width: 100%;
+    height: 100%;
+    transform: scale(1.2);
+    background-size: cover;
+    background-position: center;
+}
+#albump_data_img{
+    width: 90%;
+    min-height: 25vw;
+    max-height: 25vw;
+    background-color: #555;
+    object-fit: cover;
+    border-radius: 30px;
+    margin-top: 1vw;
+}
+#albump_data_text {
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding-top: 3vh;
+    padding-left: 5vw;
+}
+#albump_data_title {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+#albump_data_link {
+    font-style: italic;
+    width: 100px;
+    position: relative;
     z-index: 2;
+    background-color: #00000000;
+    border: 0;
+    user-select: none;
+    cursor: pointer;
+}
+#albump_data_link::after {
+    content: '';
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    left: 0;
+    height: 2px;
+    width: 0%;
+    z-index: 30;
+    bottom: 0px;
+    transition: width 0.15s;
+}
+#albump_data_link:hover::after {
+    width: 100%;
+}
+#song_list {
+    margin-left: 3vw;
+    margin-right: 5vw;
+    /* background-color: rgba(0, 0, 0, 0.3); */
+    border-radius: 10px;
+    width: 40vw;
+    overflow-y: auto;
+    padding-right: 2vw;
+}
+/* 隐藏滚动条按钮 */
+#song_list::-webkit-scrollbar-button {
+    display: none;
+}
+
+/* 自定义滚动条样式 */
+#song_list::-webkit-scrollbar {
+    width: 8px; /* 滚动条的宽度 */
+    height: 12px; /* 滚动条的高度 (用于水平滚动条) */
+}
+
+/* 滚动条轨道 */
+#song_list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.7); /* 轨道颜色 */
+    border-radius: 10px; /* 轨道圆角 */
+}
+
+/* 滚动条滑块 */
+#song_list::-webkit-scrollbar-thumb {
+    background: rgba(98, 98, 98, 1); /* 滑块颜色 */
+    border-radius: 10px; /* 滑块圆角 */
+}
+
+/* 滚动条滑块在被悬停时 */
+#song_list::-webkit-scrollbar-thumb:hover {
+    background: rgb(118, 118, 118); /* 悬停时滑块颜色 */
+}
+#song_list::-webkit-scrollbar-thumb:active {
+    background: #555; /* 悬停时滑块颜色 */
+}
+.song_item {
+    padding-left: 2vw;
+    background-color: rgba(0, 0, 0, 0.3);
+    min-height: 20vh;
+    width: 95%;
+    border-radius: 15px;
+    position: relative;
+    margin-bottom: 2vh;
+    padding-bottom: 2vh;
+}
+.song_title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+/* .song_origin {
+    font-style: italic;
+} */
+.song_duration {
+    position: absolute;
+    right: 30px;
+    bottom: 10px;
+    font-size: 1em;
+    font-style: italic;
+    padding-right: 3px;
 }

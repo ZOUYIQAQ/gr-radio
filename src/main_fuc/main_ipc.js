@@ -47,3 +47,11 @@ ipcMain.on('change_volume', (event, volume) => {
 ipcMain.on('change_collect', () => {
     windows.mainWindow.webContents.send('change_collect')
 })
+// 监听并响应音乐专辑id改变
+ipcMain.on('update_music_album_id', (event, album_id) => {
+    windows.mainWindow.webContents.send('update_music_album_id', album_id)
+})
+// 监听并响应新闻数据改变
+ipcMain.on('updata_news_data', (event) => {
+    windows.mainWindow.webContents.send('updata_news_data')
+})
