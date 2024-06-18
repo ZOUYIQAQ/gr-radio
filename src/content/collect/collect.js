@@ -30,7 +30,7 @@ function CollectPage() {
     }, [])
     return (
         <div id='collect_page'>
-            {!collect_song_data || collect_song_data.length === 0 ? <div id='collect_err'>获取收藏失败, 请检查登录和网络状态</div> : collect_song_data.map((item, index) => (
+            {!collect_song_data || collect_song_data.length === 0 ? <div id='collect_err'>收藏为空, 请检查登录和网络状态</div> : collect_song_data.map((item, index) => (
                 <div key={index} className='exterior_box'>
                     <div className="song_data"  onClick={()=>{album_id_change(item.url)}}>
                         <div className='cover_data_box'>

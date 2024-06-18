@@ -1,27 +1,28 @@
 const { session } = require('electron');
-// 临时方案
-// 检查Set-Cookie头部是否缺少SameSite=None属性并进行补充
-session.defaultSession.webRequest.onHeadersReceived(
-    { urls: ['https://gensokyoradio.net/login/loginProcess.php'] },
+const Store = require('electron-store');
+const store = new Store();
+let pid_value = ''
+// 在发出请求前添加自定义Cookie
+session.defaultSession.webRequest.onBeforeSendHeaders(
+    { urls: ['https://gensokyoradio.net/logout/',
+        'https://gensokyoradio.net/account/favorites/',
+        'https://gensokyoradio.net/js/*',
+    ] },
     (details, callback) => {
-        if (
-            details.responseHeaders &&
-            details.responseHeaders['Set-Cookie'] &&
-            details.responseHeaders['Set-Cookie'].length &&
-            !details.responseHeaders['Set-Cookie'][0].includes('SameSite=none')
-        ) {
-            details.responseHeaders['Set-Cookie'][0] = details.responseHeaders['Set-Cookie'][0] + '; SameSite=none; Secure';
-        }
-        if (
-            details.responseHeaders &&
-            details.responseHeaders['set-cookie'] &&
-            details.responseHeaders['set-cookie'].length &&
-            !details.responseHeaders['set-cookie'][0].includes('SameSite=none')
-        ) {
-            details.responseHeaders['set-cookie'][0] = details.responseHeaders['set-cookie'][0] + '; SameSite=none; Secure';
-        }
-        console.log('Set-Cookie', details.responseHeaders['Set-Cookie'])
-        console.log('set-cookie', details.responseHeaders['set-cookie'])
+        const key = 'gr_autologin'
+        const value = store.get(key, '')
+        const pid_key = 'PHPSESSID'
+        details.requestHeaders['Cookie'] = (details.requestHeaders['Cookie'] || '') + `; ${key}=${value}; ` + `${pid_key}=${pid_value}; `
+        callback({ requestHeaders: details.requestHeaders })
+    }
+)
+// 获取pid_value
+session.defaultSession.webRequest.onHeadersReceived(
+    { urls: ['https://gensokyoradio.net/account/favorites/'] },
+    (details, callback) => {
+        if (details.responseHeaders['Set-Cookie'] && details.responseHeaders['Set-Cookie'].length > 0) pid_value = details.responseHeaders['Set-Cookie'][0].match(/PHPSESSID=(\w+)/)[1]
+        if (details.responseHeaders['set-cookie'] && details.responseHeaders['set-cookie'].length > 0) pid_value = details.responseHeaders['set-cookie'][0].match(/PHPSESSID=(\w+)/)[1]
+        console.log('pid_value', pid_value)
         callback({ cancel: false, responseHeaders: details.responseHeaders });
     },
 )

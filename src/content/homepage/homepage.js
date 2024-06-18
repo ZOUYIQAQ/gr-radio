@@ -1,12 +1,13 @@
 import './homepage.css'
-import {add_star_listener} from './star_vfx/star_vfx'
-import {add_love_listener} from './love_vfx/love_vfx'
-import {init_play_vfx} from './play_vfx/play_vfx'
+import { add_star_listener } from './star_vfx/star_vfx'
+import { add_love_listener } from './love_vfx/love_vfx'
+import { init_play_vfx } from './play_vfx/play_vfx'
 import React, { useEffect } from 'react';
-import {change_music_data} from './play_vfx/homepage_change'
+import { change_music_data } from './play_vfx/homepage_change'
 import init_palyer from './play_vfx/homepage_player'
-import {init_color} from '../../colour/colour'
+import { init_color } from '../../colour/colour'
 import init_change_album_id from './play_vfx/album_id_change'
+import { init_music_visualization } from './music_visualization/music_visualization'
 // 星星列表
 function StarList() {
     const star_img = 'img/icons8-nostar-50.png'
@@ -26,14 +27,15 @@ function Homepage() {
         init_palyer()
         init_color()
         init_change_album_id()
+        init_music_visualization()
     }, [])
     return (
         <div className='homepage'>
             <div id="content_left">
-                <canvas id='canvas'></canvas>
                 <div id="cover">
+                    <canvas id='canvas_bg'></canvas>
                     <div id='player' className='pause_style'>
-                    <img id='player_icon' src='./img/icons8-停止-100.png' alt=''></img>
+                        <img id='player_icon' src='./img/icons8-停止-100.png' alt=''></img>
                     </div>
                     {/* <!-- 音乐封面 --> */}
                     <img id="cover_img" src="/img/ex.png" alt=""></img>

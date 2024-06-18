@@ -1,6 +1,8 @@
 import ColorThief from 'colorthief'
 const getData = window.electron.getData
-const data_name = 'song_data'
+const saveData = window.electron.saveData
+const song_data_name = 'song_data'
+const color_data_name = 'color_data'
 const colorThief = new ColorThief()
 // 从base64图片生成图片
 function create_image(base64) {
@@ -53,7 +55,7 @@ function get_ac_color(color, color_list, mode='min') {
 // 设置背景图片
 function set_background_image() {
     const body = document.querySelector('#background')
-    let img_url = JSON.parse(getData(data_name))?.img
+    let img_url = JSON.parse(getData(song_data_name))?.img
     img_url = img_url ? img_url : document.querySelector('#cover_img')?.src
     body.style.backgroundImage = 'url(' + img_url + ')'
 }
@@ -85,7 +87,7 @@ function change_subject_color(t_c, ht_c, h_c, p_c, f_c) {
 }
 // 图片加载回调函数
 export async function img_load_callback() {
-    const data = await getData(data_name)
+    const data = await getData(song_data_name)
     if (!JSON.parse(data)?.img) return
     const base64 = JSON.parse(data).img
     let main_color = await get_main_color(base64)
@@ -93,6 +95,9 @@ export async function img_load_callback() {
     const approximate_color = get_ac_color(main_color, color_distribution)
     const comparison_color = get_ac_color(main_color, color_distribution, 'max')
     change_subject_color(main_color, main_color, main_color, approximate_color, comparison_color)
+    // 设置音乐可视化颜色
+    window?.spg?.set_rgba(...main_color.map(x => Math.min(x + 20, 255)), 0.5)
+    saveData(color_data_name, JSON.stringify(main_color))
 }
 // 初始化主题色
 export function init_color() {

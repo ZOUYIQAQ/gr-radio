@@ -55,3 +55,7 @@ ipcMain.on('update_music_album_id', (event, album_id) => {
 ipcMain.on('updata_news_data', (event) => {
     windows.mainWindow.webContents.send('updata_news_data')
 })
+// 监听并响应评论数据改变
+ipcMain.on('updata_review_data', (event) => {
+    windows.mainWindow.webContents.send('updata_review_data')
+})

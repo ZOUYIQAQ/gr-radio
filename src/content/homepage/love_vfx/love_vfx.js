@@ -1,5 +1,6 @@
 import love from './request_love'
 const getData = window.electron.getData
+const saveData = window.electron.saveData
 const data_name = 'song_data'
 let is_love = 'no_love'
 // 改变心心状态
@@ -47,6 +48,7 @@ async function click_love() {
             is_love = 'no_love'
         }
     }
+    saveData('is_love', is_love)
     window.tips(result)
 }
 // 歌曲是否确实发生了变化
@@ -59,6 +61,7 @@ function music_is_change() {
 export function clear_love() {
     if (!music_is_change()) return
     const pathname = window.location.pathname
+    saveData('is_love', 'no_love')
     if (pathname !== '/' && pathname !== '/homepage') return
     change_love('no_love')
     is_love = 'no_love'
@@ -66,9 +69,10 @@ export function clear_love() {
 // 绑定心心事件
 export function add_love_listener() {
     // 初始化心心
-    is_love = 'no_love'
+    is_love = getData('is_love', 'no_love')
     const love = document.querySelector('.love')
     love.addEventListener('mouseover', touch_love)
     love.addEventListener('mouseout', leave_love)
     love.addEventListener('click', click_love)
+    change_love(is_love)
 }

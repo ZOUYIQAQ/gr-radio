@@ -10,7 +10,7 @@ function start() {
     wss = new WebSocket(url)
     wss.onopen = onopen_callback
     wss.onmessage = onmessage_callback
-    // wss.onclose = close
+    wss.onclose = close
 }
 // 启动函数回调函数
 function onopen_callback() {

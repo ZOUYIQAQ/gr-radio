@@ -6,6 +6,7 @@ import SettingsPage from './settings/settings'
 import CollectPage from './collect/collect'
 import AlbumPage from './album/album'
 import NewsPage from './news/news'
+import ReviewPage from './review/review'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CSSTransition, SwitchTransition, } from 'react-transition-group';
 import { useLocation } from 'react-router-dom';
@@ -30,6 +31,8 @@ function Content() {
                         <Route path="/playlist" element={<AlbumPage />} />
                         {/* 新闻页面 */}
                         <Route path="/news" element={<NewsPage />} />
+                        {/* 评论页面 */}
+                        <Route path="/comment" element={<ReviewPage />} />
                         {/* 设置页面 */}
                         <Route path="/setting" element={<SettingsPage />} />
                     </Routes>

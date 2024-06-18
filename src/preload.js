@@ -101,13 +101,23 @@ contextBridge.exposeInMainWorld('electron', {
             callback(album_id)
         })
     },
-    // 跟新新闻数据
+    // 更新新闻数据
     updataNewsData: () => {
         ipcRenderer.send('updata_news_data')
     },
     // 响应新闻数据更新
     onUpdataNewsData: (callback) => {
         ipcRenderer.on('updata_news_data', () => {
+            callback()
+        })
+    },
+    // 更新评论数据
+    updataReviewData: () => {
+        ipcRenderer.send('updata_review_data')
+    },
+    // 响应评论数据更新
+    onUpdataReviewData: (callback) => {
+        ipcRenderer.on('updata_review_data', () => {
             callback()
         })
     }

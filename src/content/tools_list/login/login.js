@@ -39,6 +39,7 @@ export async function login(user, password, remember) {
     saveData('user_name', name)
     document.querySelector('#overlay')?.remove()
     saveData('is_out', false)
+    saveData('gr_autologin', data['autologin'])
     // 获取收藏数据
     try { get_data() } catch (e) {}
     is_request_login = false
@@ -52,6 +53,7 @@ export async function logout() {
     saveData('is_out', true)
     // 清空收藏数据
     saveData('collect_data', null)
+    saveData('gr_autologin', '')
     changeCollecteData()
 }
 // 保存账号密码

@@ -30,13 +30,14 @@ appInitialized(init_mmg)
 appInitialized(init_row_count)
 appInitialized(onChangeMusicData, img_load_callback)
 appInitialized(onChangeMusicData, clear_love)
+appInitialized(clear_love)
 appInitialized(onChangeMusicData, clear_star)
+appInitialized(clear_star)
 appInitialized(onChangeMusicData, getDataFun)
 appInitialized(onChangeCollecteData, updata_collect_data)
 appInitialized(onUpdateMusicAlbumId, updata_album_data)
 appInitialized(onUpdataNewsData, up_news_data)
 function App() {
-  
   return (
     <Router>
       <div id="app">

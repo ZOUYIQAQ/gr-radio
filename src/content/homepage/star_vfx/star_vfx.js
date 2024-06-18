@@ -1,5 +1,6 @@
 import request_star from './request_star.js'
 const getData = window.electron.getData
+const saveData = window.electron.saveData
 const data_name = 'song_data'
 let now_start = -1
 // 点亮几颗星星
@@ -32,6 +33,7 @@ async function click_star(event) {
         now_start = -1
         star_light(-1)
     }
+    saveData('now_start', now_start)
     window.tips(messages)
 }
 // 歌曲是否确实发生了变化
@@ -44,6 +46,7 @@ function music_is_change() {
 export function clear_star() {
     if (!music_is_change()) return
     const pathname = window.location.pathname
+    saveData('now_start', -1)
     if (pathname !== '/' && pathname !== '/homepage') return
     now_start = -1
     star_light(-1)
@@ -51,11 +54,12 @@ export function clear_star() {
 // 统一绑定事件
 export function add_star_listener() {
     // 初始化星星
-    now_start = -1
+    now_start = getData('now_start')
     const star_list = document.querySelectorAll('.star')
     for (const star of star_list) {
         star.addEventListener('mouseover', only_touch)
         star.addEventListener('mouseout', leave_star)
         star.addEventListener('click', click_star)
     }
+    star_light(now_start)
 }
