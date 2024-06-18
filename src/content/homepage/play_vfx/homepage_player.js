@@ -13,9 +13,8 @@ function stop() {
 }
 // 判断当前播放状态
 function isPlaying() {
-    const play_doc = document.querySelector('#player')
-    const play_class = play_doc.getAttribute('class')
-    if (play_class === 'play_style'){
+    const play_text = document.querySelector('#play_control').innerText
+    if (play_text === 'stop!' || play_text === 'play?'){
         return true
     }else {
         return false
@@ -31,7 +30,7 @@ function change_status() {
 }
 // 添加回调函数
 function  init_palyer() {
-    const play_doc = document.querySelector('#player')
+    const play_doc = document.querySelector('#play_control')
     play_doc.addEventListener('click', change_status, true)
 }
 export default init_palyer

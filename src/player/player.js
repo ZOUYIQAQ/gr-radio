@@ -1,6 +1,7 @@
-const {change_style} = require('../content/homepage/play_vfx/play_vfx')
+const { space_key_control, be_playing, be_stop } = require('../content/homepage/play_vfx/play_vfx')
 const onChangeMusicPlayStatus = window.electron.onChangeMusicPlayStatus
 const onChangeMusicVolume = window.electron.onChangeMusicVolume
+const saveData = window.electron.saveData
 const player_url_1 = 'https://stream.gensokyoradio.net/1/'
 // const player_url_2 = 'https://stream.gensokyoradio.net/2/'
 // const player_url_3 = 'https://stream.gensokyoradio.net/3/'
@@ -23,6 +24,7 @@ function creater_player() {
 function play() {
     if (is_playing) return
     is_playing = true
+    saveData('is_playing', is_playing)
     console.log('play')
     if (now_time() - last_stop_time < out_time) {
         clearTimeout(stop_timeout_id)
@@ -39,6 +41,7 @@ function play() {
             is_playing = false
         })
     }
+    saveData('is_playing', is_playing)
 }
 // 暂停
 function pause() {
@@ -46,6 +49,7 @@ function pause() {
     audio.pause()
     is_playing = false
     document.querySelector('audio').onerror = null
+    saveData('is_playing', is_playing)
 }
 // 停止
 function stop() {
@@ -54,8 +58,8 @@ function stop() {
     stop_timeout_id = setTimeout(() => {
         console.log('stop')
         audio.src = ''
-        change_style('stop')
-    }, out_time);
+        be_stop()
+    }, out_time)
 }
 // 设定声音大小
 function setVolume(volume_num) {
@@ -66,13 +70,14 @@ function setVolume(volume_num) {
 function sc_callback(mode) {
     audio = document.querySelector('#gr_radio')
     // 改变样式, 写在这里是为了兼容键盘事件
-    if (mode === 'stop') change_style('pause')
-    else change_style(mode)
     if (mode === 'play') {
+        be_playing()
         play()
     } else if (mode === 'pause') {
+        be_stop()
         pause()
     } else if (mode === 'stop') {
+        be_stop()
         stop()
     }
 }

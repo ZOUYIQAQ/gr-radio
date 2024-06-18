@@ -25,7 +25,7 @@ const is_playing_data_name = 'is_playing'
 // 杂七杂八的初始化
 appInitialized(start)
 appInitialized(init_player)
-appInitialized(saveData, is_playing_data_name, 'stop')
+appInitialized(saveData, is_playing_data_name, false)
 appInitialized(init_mmg)
 appInitialized(init_row_count)
 appInitialized(onChangeMusicData, img_load_callback)

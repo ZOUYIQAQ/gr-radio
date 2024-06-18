@@ -1,7 +1,7 @@
 import './homepage.css'
 import { add_star_listener } from './star_vfx/star_vfx'
 import { add_love_listener } from './love_vfx/love_vfx'
-import { init_play_vfx } from './play_vfx/play_vfx'
+import { init_play_control } from './play_vfx/play_vfx'
 import React, { useEffect } from 'react';
 import { change_music_data } from './play_vfx/homepage_change'
 import init_palyer from './play_vfx/homepage_player'
@@ -21,7 +21,7 @@ function Homepage() {
     // 页面初始化
     useEffect(() => {
         add_love_listener()
-        init_play_vfx()
+        init_play_control()
         add_star_listener()
         change_music_data()
         init_palyer()
@@ -34,9 +34,12 @@ function Homepage() {
             <div id="content_left">
                 <div id="cover">
                     <canvas id='canvas_bg'></canvas>
-                    <div id='player' className='pause_style'>
-                        <img id='player_icon' src='./img/icons8-停止-100.png' alt=''></img>
+                    <div id='play_control' class="show">
+                        <p>stop!</p>
                     </div>
+                    {/* <div id='player' className='pause_style'>
+                        <img id='player_icon' src='./img/icons8-停止-100.png' alt=''></img>
+                    </div> */}
                     {/* <!-- 音乐封面 --> */}
                     <img id="cover_img" src="/img/ex.png" alt=""></img>
                 </div>
