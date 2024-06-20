@@ -27,17 +27,85 @@
     padding: 10px;
     padding-left: 20px;
     display: flex;
-    justify-self: center;
     align-items: center;
+    justify-content: space-between;
     transition: background-color 0.1s;
+    user-select: none;
 }
 .setting_item:hover {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 .setting_text {
-    padding-left: 2px;
+    position: relative;
+    padding: 5px;
 }
 .setting_icon {
     width: 6vh;
     margin-right: 2vw;
+}
+.left_box {
+    display: flex;
+}
+.reght_box {
+    display: flex;
+    height: 100%;
+
+}
+.switch_box {
+    position: relative;
+    width: 6vw;
+    height: 5vw;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+.switch_slider {
+    z-index: -1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 100%;
+    height: 50%;
+    border-radius: 20px;
+    transition: background-color 0.15s;
+}
+.switch_slider::after {
+    content: '';
+    position: absolute;
+    background-color: rgba(117, 117, 117, 0.7);
+    width: 2vw;
+    height: 2vw;
+    border-radius: 50%;
+    top: 50%;
+    left: 23%;
+    transform: translate(-50%, -50%);
+    transition: left 0.3s, background-color 0.15s;
+}
+.switch_input:checked + .switch_slider::after {
+    left: 77%;
+    background-color: rgba(117, 117, 117, 1);
+}
+.switch_input:checked + .switch_slider {
+    background-color: rgba(0, 0, 0, 1);
+}
+.switch_input {
+    opacity: 0;
+    pointer-events: none;
+}
+#about .setting_text::after {
+    content: '';
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    left: 0;
+    height: 2px;
+    width: 0%;
+    z-index: 30;
+    bottom: 0px;
+    transition: width 0.15s;
+}
+#about:hover .setting_text::after {
+    width: 100%;
 }

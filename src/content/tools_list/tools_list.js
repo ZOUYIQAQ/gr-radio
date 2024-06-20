@@ -51,14 +51,14 @@ function ToolModule() {
     }, [])
     return (
         <>
-            <div id="tool_list">
+            <div id="tool_list" className=' hidder_tool_list'>
                 <div id='tool_list_content'>
                     <ToolList />
                 </div>
             </div>
             <div id="hidden_tools_button">
                 <div id='hidden_tools_button_div' onClick={hidden_tools_list}>
-                    <h2>{'<'}</h2>
+                    <h2>{'>'}</h2>
                 </div>
             </div>
         </>

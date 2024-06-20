@@ -242,7 +242,7 @@ let canvas = document.querySelector('canvas')
 let spg = canvas ? new Spectrogram(audioEle, canvas) : null
 // 初始化音谱
 export function init_music_visualization() {
-    if (!spg) {
+    if (!spg || !spg.audio || !spg.canvas) {
         audioEle = document.querySelector('audio')
         canvas = document.querySelector('canvas')
         spg = new Spectrogram(audioEle, canvas)

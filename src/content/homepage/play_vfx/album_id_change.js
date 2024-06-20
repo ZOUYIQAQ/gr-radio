@@ -11,6 +11,6 @@ function up_album_id() {
 }
 // 绑定事件
 function init_change_album_id() {
-    document.querySelector('#cover_img').addEventListener('dblclick', up_album_id)
+    document.querySelector('#album').addEventListener('click', up_album_id)
 }
 export default init_change_album_id

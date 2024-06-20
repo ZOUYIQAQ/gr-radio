@@ -34,12 +34,9 @@ function Homepage() {
             <div id="content_left">
                 <div id="cover">
                     <canvas id='canvas_bg'></canvas>
-                    <div id='play_control' class="show">
+                    <div id='play_control' className="show">
                         <p>stop!</p>
                     </div>
-                    {/* <div id='player' className='pause_style'>
-                        <img id='player_icon' src='./img/icons8-停止-100.png' alt=''></img>
-                    </div> */}
                     {/* <!-- 音乐封面 --> */}
                     <img id="cover_img" src="/img/ex.png" alt=""></img>
                 </div>

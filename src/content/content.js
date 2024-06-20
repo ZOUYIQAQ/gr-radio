@@ -13,12 +13,10 @@ import { useLocation } from 'react-router-dom';
 
 // 内容
 function Content() {
-    const nodeRef = React.useRef();
     const location = useLocation();
     return (
         <div id="content">
             <ToolModule />
-            <SwitchTransition>
                 <CSSTransition key={location.key} classNames="fade" timeout={0}>
                     <Routes location={location}>
                         {/* 默认显示主页 */}
@@ -37,7 +35,6 @@ function Content() {
                         <Route path="/setting" element={<SettingsPage />} />
                     </Routes>
                 </CSSTransition>
-            </SwitchTransition>
             {/* <Homepage /> */}
         </div>
     )

@@ -156,3 +156,21 @@
 #play_control:active {
     background-color: rgba(0, 0, 0, 0.7) !important;
 }
+#album {
+    position: relative;
+    cursor: pointer;
+}
+#album::after {
+    content: '';
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    left: 0;
+    height: 2px;
+    width: 0%;
+    z-index: 30;
+    bottom: 0px;
+    transition: width 0.15s;
+}
+#album:hover::after {
+    width: 100%;
+}
