@@ -54,7 +54,7 @@ async function click_love() {
 // 歌曲是否确实发生了变化
 function music_is_change() {
     const loc_data = getData(data_name)
-    if (loc_data.img) return false
+    if (loc_data?.img) return false
     else return true
 }
 // 清空心心

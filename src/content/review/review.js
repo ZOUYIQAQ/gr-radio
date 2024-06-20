@@ -5,7 +5,7 @@ const openLink = window.electron.openLink
 const data_name = 'review_data'
 let news_data, set_news_data
 // 跟新数据
-export function up_news_data() {
+export function up_review_data() {
     if (!set_news_data) return
     set_news_data(getData(data_name, {'news_list': [], 'more_news_link': ''}))
 }

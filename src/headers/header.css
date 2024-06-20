@@ -3,7 +3,7 @@
     display: flex;
     -webkit-app-region: drag;
     user-select: none;
-    background-color: #FFD4D4;
+    background-color: rgba(255, 212, 212, 0.5);
     backdrop-filter: blur(20px) brightness(0.8);
     z-index: 99999;
 }

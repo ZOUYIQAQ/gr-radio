@@ -37,6 +37,7 @@ class AlbumDatabase {
   // 查询数据
   async get(album_id) {
     // 统一类型
+    if (!album_id) return '{}'
     if (typeof album_id !== typeof 0) album_id = parseInt(album_id)
     const album = await this.Album.findOne({
       where: { album_id: album_id }

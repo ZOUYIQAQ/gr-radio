@@ -47,7 +47,7 @@ async function login_btn_click() {
     if (!username) window.tips('请输入账号')
     if (!password) window.tips('请输入密码')
     const name = await login(username, password, remember)
-    window.tips('欢迎回来, '+name)
+    if (name) window.tips('欢迎回来, '+name)
 }
 // 初始化用户名按钮
 export function init_user_btn() {

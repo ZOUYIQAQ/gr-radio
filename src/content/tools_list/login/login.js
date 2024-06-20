@@ -27,10 +27,11 @@ export async function login(user, password, remember) {
         return
     }
     data = await response.json()
-    if (data['error'] || !data) {
+    if (!data || data['error']) {
         const up_gg = 'Incorrect username/password'
         const message = data['passError'] ? data['passError'] : '登录失败(未知错误)'
-        if (message !== up_gg) window.tips(message)
+        if (message === up_gg) window.tips('账号或密码错误')
+        else window.tips(message)
         is_request_login = false
         return
     }
@@ -48,7 +49,9 @@ export async function login(user, password, remember) {
 // 退出的奴
 export async function logout() {
     const out_url = 'https://gensokyoradio.net/logout/'
-    fetch(out_url)
+    try {
+        fetch(out_url)
+    }catch (e) {return logout()}
     saveData('user_name', '未登录')
     saveData('is_out', true)
     // 清空收藏数据

@@ -29,7 +29,7 @@ const setting_list = [
     {
         'id': 'dont_check_update',
         'ico_src': 'icons8-删除-100.png',
-        'text': '关闭自动检查更新',
+        'text': '自动检查更新',
         'right_doc': () => {
             return (
                 <label className="switch_box">

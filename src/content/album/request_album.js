@@ -115,12 +115,15 @@ async function request_album(url) {
     return album_data
 }
 // 测试
-// await request_album('https://gensokyoradio.net/music/album/10008/')
+let is_geting = false
 export default async function get_album_data(album_id) {
+    if (is_geting) return
+    is_geting = true
     let data = await albumDatabaseGet(album_id)
     if(data) data = JSON.parse(data)
     const url = `https://gensokyoradio.net/music/album/${album_id}/`
     if (!data) data = await request_album(url)
-    // console.log(data)
+    console.log(album_id, data)
+    is_geting = false
     return data
 }

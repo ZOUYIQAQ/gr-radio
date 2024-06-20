@@ -6,17 +6,12 @@ const openLink = window.electron.openLink
 const data_name = 'song_data'
 let album_data, set_album_data
 // 专辑id
-let now_album_id = JSON.parse(getData(data_name)).albumid
+let now_album_id = JSON.parse(getData(data_name))?.albumid
 // 更新数据
 export function updata_album_data(album_id) {
     if (!album_id) return
     album_id = parseInt(album_id)
-    if (!set_album_data) {
-        now_album_id = album_id
-        return
-    }
     now_album_id = album_id
-    get_album_data(album_id).then(data => set_album_data(data))
 }
 // 获取杂七杂八的数据
 function get_other_data(data) {
@@ -47,8 +42,9 @@ function SongList({song_data_list}) {
 function AlbumPage() {
     [album_data, set_album_data] = useState({'tracks':[]})
     useEffect(() => {
+        now_album_id = now_album_id ? now_album_id : 11723 
         get_album_data(now_album_id).then(data => set_album_data(data))
-    }, [])
+    }, [now_album_id])
     return (
         <div id='albump_page'>
             <div id='albump_data'>
