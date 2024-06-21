@@ -23,7 +23,8 @@ function createWindow() {
     },
   });
 
-  windows.mainWindow.loadURL('http://localhost:3000 '); // React应用的URL
+  // windows.mainWindow.loadURL('http://localhost:3000 '); // React应用的URL
+  windows.mainWindow.loadFile('build/index.html')
   windows.mainWindow.on('closed', () => {
     windows.mainWindow = null
   })

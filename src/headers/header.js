@@ -1,4 +1,8 @@
 import "./header.css"
+import big_window_png from '../assets/img/icons8-最大化按钮-48.png'
+import min_window_png from '../assets/img/icons8-最小化-50.png'
+import close_window_png from '../assets/img/icons8-叉-50.png'
+import restore_window_png from '../assets/img/icons8-restore-down-48.png'
 const windowManage = window.electron.windowManage
 const isMaximized = window.electron.isMaximized
 // 最小化窗口
@@ -9,9 +13,9 @@ function MinWin() {
 function MaxWin() {
     const win_ico = document.querySelector('#max > img')
     if (isMaximized('mainWindow')){
-        win_ico.src = 'img/icons8-最大化按钮-48.png'
+        win_ico.src = big_window_png
     }else{
-        win_ico.src = 'img/icons8-restore-down-48.png'
+        win_ico.src = restore_window_png
     }
     windowManage('mainWindow', 'max')
 }
@@ -29,13 +33,13 @@ function Headers() {
             </div>
             <div id="header-right">
                 <div className="ico" id="min" onClick={MinWin}>
-                    <img src="/img/icons8-最小化-50.png" alt=""></img>
+                    <img src={min_window_png} alt=""></img>
                 </div>
                 <div className="ico" id="max" onClick={MaxWin}>
-                    <img src="/img/icons8-最大化按钮-48.png" alt=""></img>
+                    <img src={big_window_png} alt=""></img>
                 </div>
                 <div className="ico" id="close" onClick={CloseWin}>
-                    <img src="/img/icons8-叉-50.png" alt=""></img>
+                    <img src={close_window_png} alt=""></img>
                 </div>
             </div>
         </div>

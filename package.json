@@ -11,9 +11,10 @@
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "sequelize": "^6.37.3",
-    "sqlite3": "^5.1.7",
+    "sqlite3": "^5.1.6",
     "sweetalert2": "^11.11.0",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "electron-store": "^8.2.0"
   },
   "main": "./src/main.js",
   "scripts": {
@@ -21,7 +22,34 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "electron": "electron ."
+    "electron": "electron .",
+    "dist": "electron-builder"
+  },
+  "homepage": "./",
+  "build": {
+    "appId": "gr-radio",
+    "productName": "gr-radio",
+    "copyright": "GPL 3.0",
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "nsis": {
+      "oneClick": false,
+      "language": "2052",
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "files": [
+      "build/**/*",
+      "./src/main.js",
+      "./src/preload.js",
+      "./src/content/album/album_database.js"
+    ],
+    "extends": null
   },
   "eslintConfig": {
     "extends": [
@@ -45,6 +73,7 @@
     "concurrently": "^8.2.2",
     "customize-cra": "^1.0.0",
     "electron": "^29.3.0",
+    "electron-builder": "^24.13.3",
     "electron-store": "^8.2.0",
     "hard-source-webpack-plugin": "^0.13.1",
     "howler": "^2.2.4",

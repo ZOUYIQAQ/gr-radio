@@ -19,7 +19,7 @@ function Voice() {
                 <img className="voice" src="./img/icons8-中等音量-50.png" alt=''></img>
             </div>
             {/* <!-- 具体时长 --> */}
-            <p id='time_p'>3:30/ 4:20</p>
+            <p id='time_p'>0:00/ 0:00</p>
         </div>
     )
 }
