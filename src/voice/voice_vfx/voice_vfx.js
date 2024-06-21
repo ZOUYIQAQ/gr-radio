@@ -1,3 +1,7 @@
+import big_img from '../../assets/img/icons8-高音量-50.png'
+import normal_img from '../../assets/img/icons8-中等音量-50.png'
+import small_img from '../../assets/img/icons8-低容量-50.png'
+import none_img from '../../assets/img/icons8-静音-50.png'
 const saveData = window.electron.saveData
 const getData = window.electron.getData
 const voice_data_name = 'voice_data'
@@ -5,10 +9,6 @@ let is_mouse_down = false
 // 改变声音图标样式
 function change_voice_img(num) {
     num = num / 100
-    const big_img = 'img/icons8-高音量-50.png'
-    const normal_img = 'img/icons8-中等音量-50.png'
-    const small_img = 'img/icons8-低容量-50.png'
-    const none_img = 'img/icons8-静音-50.png'
     const voice_doc = document.querySelector('.voice')
     if (num >= 1 || num < 0) return
     if (num > 0.85) {

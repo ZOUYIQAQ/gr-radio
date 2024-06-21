@@ -3,6 +3,7 @@ import big_window_png from '../assets/img/icons8-最大化按钮-48.png'
 import min_window_png from '../assets/img/icons8-最小化-50.png'
 import close_window_png from '../assets/img/icons8-叉-50.png'
 import restore_window_png from '../assets/img/icons8-restore-down-48.png'
+import app_logo from '../assets/img/app_logo.png'
 const windowManage = window.electron.windowManage
 const isMaximized = window.electron.isMaximized
 // 最小化窗口
@@ -29,7 +30,7 @@ function Headers() {
         <div id="headers">
             <div id="header-left">
                 <div style={{width: '10px'}}></div>
-                <img src="/img/app_logo.png" alt="" id="app_logo"></img>
+                <img src={app_logo} alt="" id="app_logo"></img>
             </div>
             <div id="header-right">
                 <div className="ico" id="min" onClick={MinWin}>

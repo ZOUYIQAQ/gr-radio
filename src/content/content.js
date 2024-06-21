@@ -7,7 +7,7 @@ import CollectPage from './collect/collect'
 import AlbumPage from './album/album'
 import NewsPage from './news/news'
 import ReviewPage from './review/review'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { CSSTransition, SwitchTransition, } from 'react-transition-group';
 import { useLocation } from 'react-router-dom';
 

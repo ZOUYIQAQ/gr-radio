@@ -123,7 +123,7 @@ export default async function get_album_data(album_id) {
     if(data) data = JSON.parse(data)
     const url = `https://gensokyoradio.net/music/album/${album_id}/`
     if (!data) data = await request_album(url)
-    console.log(album_id, data)
+    // console.log(album_id, data)
     is_geting = false
     return data
 }

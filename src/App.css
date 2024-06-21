@@ -7,7 +7,7 @@
 /* 设置统一字体 */
 @font-face {
     font-family: "ex";
-    src: url('../public/font/GenJyuuGothic-Normal-2.ttf') format('truetype');
+    src: url('./assets/font/GenJyuuGothic-Normal-2.ttf') format('truetype');
 }
 * {
     font-family: "ex";
@@ -39,7 +39,7 @@
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background-image: url('../public/img/ex.png');
+    background-image: url('./assets//img/ex.png');
     background-color: #ffffff;
     background-size: cover;
     background-position: center;

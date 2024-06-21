@@ -30,7 +30,7 @@
 #albump_background{
     z-index: -2;
     position: absolute;
-    background-image: url('../../../public/img/ex.png');
+    background-image: url('../../assets/img/ex.png');
     filter: blur(30px);
     width: 100%;
     height: 100%;

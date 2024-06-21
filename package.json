@@ -25,7 +25,7 @@
     "electron": "electron .",
     "dist": "electron-builder"
   },
-  "homepage": "./",
+  "homepage": ".",
   "build": {
     "appId": "gr-radio",
     "productName": "gr-radio",
@@ -45,9 +45,7 @@
     },
     "files": [
       "build/**/*",
-      "./src/main.js",
-      "./src/preload.js",
-      "./src/content/album/album_database.js"
+      "./src/**/*"
     ],
     "extends": null
   },

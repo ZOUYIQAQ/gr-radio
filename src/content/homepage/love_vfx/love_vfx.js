@@ -1,12 +1,11 @@
 import love from './request_love'
+import love_img from '../../../assets/img/icons8-love-24.png'
+import no_love_img from '../../../assets/img/icons8-nolove-24.png'
 const getData = window.electron.getData
 const saveData = window.electron.saveData
-const data_name = 'song_data'
 let is_love = 'no_love'
 // 改变心心状态
 function change_love(mode) {
-    const love_img = 'img/icons8-love-24.png'
-    const no_love_img = 'img/icons8-nolove-24.png'
     const love = document.querySelector('.love')
     switch (mode) {
         case 'love':
@@ -50,21 +49,6 @@ async function click_love() {
     }
     saveData('is_love', is_love)
     window.tips(result)
-}
-// 歌曲是否确实发生了变化
-function music_is_change() {
-    const loc_data = getData(data_name)
-    if (loc_data?.img) return false
-    else return true
-}
-// 清空心心
-export function clear_love() {
-    if (!music_is_change()) return
-    const pathname = window.location.pathname
-    saveData('is_love', 'no_love')
-    if (pathname !== '/' && pathname !== '/homepage') return
-    change_love('no_love')
-    is_love = 'no_love'
 }
 // 绑定心心事件
 export function add_love_listener() {
