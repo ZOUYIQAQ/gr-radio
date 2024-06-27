@@ -16,12 +16,11 @@
 
 ## 预览
 
-![alt text](.\introduce\主页.png)
-![alt text](.\introduce\收藏.png)
-![alt text](.\introduce\专辑.png)
-![alt text](.\introduce\新闻.png)
-![alt text](.\introduce\评论.png)
-![alt text](.\introduce\设置.png)
+<img src='https://github.com/ZOUYIQAQ/gr-radio/blob/main/introduce/主页.png?raw=true' alt=''>
+<img src='https://github.com/ZOUYIQAQ/gr-radio/blob/main/introduce/专辑.png?raw=true' alt=''>
+<img src='https://github.com/ZOUYIQAQ/gr-radio/blob/main/introduce/新闻.png?raw=true' alt=''>
+<img src='https://github.com/ZOUYIQAQ/gr-radio/blob/main/introduce/评论.png?raw=true' alt=''>
+<img src='https://github.com/ZOUYIQAQ/gr-radio/blob/main/introduce/设置.png?raw=true' alt=''>
 
 ## 简介
 
