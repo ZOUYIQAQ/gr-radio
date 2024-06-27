@@ -4,6 +4,7 @@ import without_link_img from '../../assets/img/icons8-外部链接-100.png'
 import check_updata_img from '../../assets/img/icons8-可用更新-100.png'
 import is_hide_img from '../../assets/img/icons8-删除-100.png'
 import aout_up_img from '../../assets/img/icons8-自动-100.png'
+import check_updates from '../../check_updates/check_updates'
 const getData = window.electron.getData
 const saveData = window.electron.saveData
 const openLink = window.electron.openLink
@@ -28,6 +29,7 @@ const setting_list = [
         },
         'onclick': () => {
             window.tips('正在检查更新...')
+            check_updates(true)
         }
     },
     {

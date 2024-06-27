@@ -1,5 +1,5 @@
 const getNowVersion = window.electron.getNowVersion
-
+const getData = window.electron.getData
 let is_get = false
 
 async function get_latest_version() {
@@ -18,10 +18,15 @@ async function get_latest_version() {
     }
 }
 
-export default async function check_updates() {
+export default async function check_updates(msg=false) {
+    if (msg) {
+        const aout_show = getData('update_switch', true)
+        if (!aout_show) return
+    }
     const now_version = getNowVersion()
     const last_version = await get_latest_version()
     console.log('now_version: ' + now_version + '\n', 'last_version: ' + last_version)
     if (!last_version) return
     if (last_version !== now_version) window.tips('有新版本可用, 请前往github下载最新版本')
+    if (msg && last_version === now_version) window.tips('已是最新版本')
 }
