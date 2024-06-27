@@ -1,4 +1,4 @@
-const { app, BrowserWindow, } = require('electron');
+const { app, BrowserWindow, Tray, Menu } = require('electron');
 const path = require('path');
 // 本地储存数据
 const Store = require('electron-store');
@@ -7,6 +7,7 @@ const store = new Store();
 let windows = {
   mainWindow: null, //主窗口
 }
+let tray
 function createWindow() {
   windows.mainWindow = new BrowserWindow({
     width: 980,
@@ -32,6 +33,22 @@ function createWindow() {
   require('./main_fuc/main_ipc')
   // 处理键盘事件相关事宜
   require('./main_fuc/key_down')
+  // 最小化到托盘
+  // 创建托盘图标
+  tray = new Tray(path.join(__dirname, './assets/img/logo_2.png'))
+  // 托盘右键菜单
+  const contextMenu = Menu.buildFromTemplate([
+    { label: '显示应用', click: () => windows.mainWindow.show() },
+    { label: '退出', click: () => app.quit() }
+  ])
+  // 设置托盘图标和右键菜单
+  tray.setToolTip('GrRadio')
+  tray.setContextMenu(contextMenu)
+  console.log(path.join(__dirname, './assets/logo_2.png'))
+  // 双击通知区图标实现应用的显示或隐藏
+  tray.on('double-click', () => {
+    windows.mainWindow.isVisible() ? windows.mainWindow.hide() : windows.mainWindow.show()
+  })
 }
 
 app.whenReady().then(() => {

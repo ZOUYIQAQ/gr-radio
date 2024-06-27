@@ -20,7 +20,7 @@ ipcMain.on('windowManage', (event, windowName, fuc) => {
         case 'close':
             windows[windowName].close()
             break
-        case 'tray_min':
+        case 'hide':
             windows[windowName].hide()
             break
         default:

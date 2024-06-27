@@ -37,6 +37,7 @@ export function update_song_data() {
     const dict_data = JSON.parse(json_data)
     set_song_data(dict_data)
     set_now_star(-1)
+    set_now_love('no_love')
     const cover_img_doc = document.querySelector('#cover_img')
     if (cover_img_doc && cover_img_doc?.src?.length > 1 && dict_data.img !== cover_img_doc?.src) {
         if ( set_now_love && set_now_star) {

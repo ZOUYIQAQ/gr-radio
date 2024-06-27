@@ -6,6 +6,7 @@ import restore_window_png from '../assets/img/icons8-restore-down-48.png'
 import app_logo from '../assets/img/app_logo.png'
 const windowManage = window.electron.windowManage
 const isMaximized = window.electron.isMaximized
+const getData = window.electron.getData
 // 最小化窗口
 function MinWin() {
     windowManage('mainWindow', 'min')
@@ -22,7 +23,9 @@ function MaxWin() {
 }
 // 关闭窗口
 function CloseWin() {
-    windowManage('mainWindow', 'close')
+    const go_hide = getData('go_hide', true)
+    if (!go_hide) windowManage('mainWindow', 'close')
+    else windowManage('mainWindow', 'hide')
 }
 
 function Headers() {

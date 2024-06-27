@@ -1,6 +1,6 @@
 {
   "name": "gr-radio",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "colorthief": "^2.4.0",
     "electron-store": "^8.2.0",
+    "electron-tray-window": "^1.2.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
@@ -41,6 +42,7 @@
       "allowToChangeInstallationDirectory": true
     },
     "win": {
+      "icon": "./src/assets/img/logo_2.png",
       "target": "nsis"
     },
     "files": [
