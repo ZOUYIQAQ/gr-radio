@@ -60,13 +60,12 @@ function set_background_image() {
     body.style.backgroundImage = 'url(' + img_url + ')'
 }
 // 获取合适的文字颜色
-function get_good_text_color(tc, fc) {
+function get_good_text_color(tc, fc, k=0.5) {
     const distance = calculate_color_distance(tc, fc)
-    let good_color = fc
-    if (distance < 150) {
-        good_color = fc.map(x => 255 - x)
-    }
-    return good_color
+    // 计算差距颜色
+    const cc = [tc[0]-fc[0], tc[1]-fc[1], tc[2]-fc[2]].map(key => key*k)
+    if (distance < 50) return [tc[0]+cc[0], tc[1]+cc[1], tc[2]+cc[2]].map(key=>Math.min(key, 255)).map(key=>Math.max(key, 0))
+    return fc
 }
 // 改变主题色
 function change_subject_color(t_c, ht_c, h_c, p_c, f_c) {

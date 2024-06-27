@@ -4,6 +4,13 @@ import get_album_data from './request_album'
 const getData = window.electron.getData
 const openLink = window.electron.openLink
 const data_name = 'song_data'
+const base_data = {
+    'tracks':[],
+    'cover_url': '',
+    'title': '',
+    'production_team': '',
+    'url': '',
+}
 let album_data, set_album_data
 // 专辑id
 let now_album_id = JSON.parse(getData(data_name))?.albumid
@@ -40,7 +47,7 @@ function SongList({song_data_list}) {
     ))
 }
 function AlbumPage() {
-    [album_data, set_album_data] = useState({'tracks':[]})
+    [album_data, set_album_data] = useState(base_data)
     useEffect(() => {
         now_album_id = now_album_id ? now_album_id : 11723 
         get_album_data(now_album_id).then(data => set_album_data(data))

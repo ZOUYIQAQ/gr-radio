@@ -1,5 +1,7 @@
 let { windows, } = require('../main.js')
 const { ipcMain, } = require('electron');
+const Store = require('electron-store');
+const store = new Store();
 // 接受信息管理窗口状态
 ipcMain.on('windowManage', (event, windowName, fuc) => {
     console.log(fuc)
@@ -17,6 +19,9 @@ ipcMain.on('windowManage', (event, windowName, fuc) => {
             break
         case 'close':
             windows[windowName].close()
+            break
+        case 'tray_min':
+            windows[windowName].hide()
             break
         default:
             console.log('命令错误')

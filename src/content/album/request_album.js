@@ -12,7 +12,7 @@ async function get(url) {
     } catch { 
         is_ruquest_get = false
         window.tips('获取专辑数据失败')
-        return null 
+        return null
     }
 }
 // 将日期字符串转换为标准格式

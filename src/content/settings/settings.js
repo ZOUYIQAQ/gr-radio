@@ -37,14 +37,32 @@ const setting_list = [
             return (
                 <label className="switch_box">
                     <input id='update_switch' className='switch_input' type="checkbox" />
-                    <span className='switch_slider' id='switch_slider'></span>
+                    <span className='switch_slider' id='auto_up'></span>
                 </label>
             )
         },
         'onclick': (e) => {
-            const switch_slider = document.getElementById('switch_slider')
+            const switch_slider = document.getElementById('auto_up')
             if (e.target.tagName === 'DIV') switch_slider.click()
             saveData('update_switch', !getData('update_switch', true))
+        }
+    },
+    {
+        'id': 'dont_direct_close',
+        'ico_src': auto_updata_img,
+        'text': '关闭时最小化到托盘',
+        'right_doc': () => {
+            return (
+                <label className="switch_box">
+                    <input id='update_switch' className='switch_input' type="checkbox" />
+                    <span className='switch_slider' id='no_close'></span>
+                </label>
+            )
+        },
+        'onclick': (e) => {
+            const switch_slider = document.getElementById('no_close')
+            if (e.target.tagName === 'DIV') switch_slider.click()
+            saveData('direct_close', !getData('direct_close', true))
         }
     },
 ]

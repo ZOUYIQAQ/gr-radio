@@ -30,7 +30,7 @@ function analyze(html_text) {
         const linke = news_doc.querySelector('article[class="media"] a').href
         data['title'] = title
         data['time'] = time ? time : ''
-        data['img_url'] = img_url ? img_url : ''
+        data['img_url'] = img_url ? img_url.replace('file:///D:/', 'https://gensokyoradio.net/') : ''
         data['linke'] = linke ? 'https://gensokyoradio.net/' + linke.match(/(news.+)/)[0] : ''
         news_list.push(data)
     }
