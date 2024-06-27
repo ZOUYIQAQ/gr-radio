@@ -1,5 +1,5 @@
 const init_albu_database = require('./content/album/album_database.js')
-const { contextBridge, ipcRenderer, shell, } = require('electron')
+const { contextBridge, ipcRenderer, shell } = require('electron')
 const Store = require('electron-store')
 const store = new Store()
 let album_database
@@ -120,5 +120,9 @@ contextBridge.exposeInMainWorld('electron', {
         ipcRenderer.on('updata_review_data', () => {
             callback()
         })
+    },
+    // 获取应用版本号
+    getNowVersion: () => {
+        return require('../package.json').version
     }
 })

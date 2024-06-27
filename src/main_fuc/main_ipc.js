@@ -1,7 +1,5 @@
 let { windows, } = require('../main.js')
-const { ipcMain, } = require('electron');
-const Store = require('electron-store');
-const store = new Store();
+const { ipcMain, } = require('electron')
 // 接受信息管理窗口状态
 ipcMain.on('windowManage', (event, windowName, fuc) => {
     console.log(fuc)

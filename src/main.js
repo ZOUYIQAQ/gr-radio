@@ -44,7 +44,6 @@ function createWindow() {
   // 设置托盘图标和右键菜单
   tray.setToolTip('GrRadio')
   tray.setContextMenu(contextMenu)
-  console.log(path.join(__dirname, './assets/logo_2.png'))
   // 双击通知区图标实现应用的显示或隐藏
   tray.on('double-click', () => {
     windows.mainWindow.isVisible() ? windows.mainWindow.hide() : windows.mainWindow.show()

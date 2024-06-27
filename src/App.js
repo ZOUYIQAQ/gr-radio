@@ -15,6 +15,7 @@ import {up_news_data} from './content/news/news.js'
 import {up_review_data} from './content/review/review.js'
 import {update_song_data} from './content/homepage/homepage.js'
 import {init_show_song_data} from './content/homepage/homepage.js'
+import check_updates from './check_updates/check_updates.js'
 const appInitialized = window.electron.appInitialized
 const onChangeMusicData = window.electron.onChangeMusicData
 const onChangeCollecteData = window.electron.onChangeCollecteData
@@ -28,6 +29,7 @@ appInitialized(start)
 appInitialized(init_player)
 appInitialized(saveData, is_playing_data_name, false)
 appInitialized(init_mmg)
+appInitialized(check_updates)
 appInitialized(init_row_count)
 appInitialized(init_show_song_data)
 appInitialized(onChangeMusicData, img_load_callback)
