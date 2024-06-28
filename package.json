@@ -1,5 +1,7 @@
 {
   "name": "gr-radio",
+  "description": "东方电台 GrRadio",
+  "author": "Lazy Cat",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -28,8 +30,8 @@
   },
   "homepage": ".",
   "build": {
-    "appId": "gr-radio",
-    "productName": "gr-radio",
+    "appId": "GrRadio",
+    "productName": "GrRadio",
     "copyright": "GPL 3.0",
     "directories": {
       "buildResources": "build",
