@@ -32,7 +32,7 @@
 
 ## 下载
 
-在这里下载[发行版](gggg)
+在这里下载[发行版](https://github.com/ZOUYIQAQ/gr-radio/releases/latest)
 
 ## 构建
 
