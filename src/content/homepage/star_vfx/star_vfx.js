@@ -23,6 +23,10 @@ function only_touch(event) {
 function leave_star(event) {
     star_light(now_star)
 }
+// 更新音乐后星星归零
+export function zero_star() {
+    if (now_star) now_star = -1
+}
 // 点击星星回调函数
 async function click_star(event) {
     const now_star_vfx = parseInt(event.target.getAttribute('vfx'))
@@ -37,7 +41,7 @@ async function click_star(event) {
 }
 // 统一绑定事件
 export function add_star_listener() {
-    now_star = getData('now_star')
+    now_star = getData('now_star', -1)
     const star_list = document.querySelectorAll('.star')
     for (const star of star_list) {
         star.addEventListener('mouseover', only_touch)

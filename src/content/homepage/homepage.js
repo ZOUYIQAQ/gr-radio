@@ -1,5 +1,6 @@
 import './homepage.css'
 import { add_star_listener } from './star_vfx/star_vfx'
+import request_star from './star_vfx/request_star'
 import { add_love_listener } from './love_vfx/love_vfx'
 import { init_play_control } from './play_vfx/play_vfx'
 import React, { useEffect, useState } from 'react'
@@ -25,7 +26,7 @@ const ex_data = JSON.stringify({
     'circle': '发行商'
 })
 // 初始化数据
-export function init_show_song_data(){
+export function init_show_song_data() {
     saveData('now_star', -1)
     saveData('is_love', 'no_love')
 }
@@ -38,20 +39,18 @@ export function update_song_data() {
     set_song_data(dict_data)
     set_now_star(-1)
     set_now_love('no_love')
-    const cover_img_doc = document.querySelector('#cover_img')
-    if (cover_img_doc && cover_img_doc?.src?.length > 1 && dict_data.img !== cover_img_doc?.src) {
-        if ( set_now_love && set_now_star) {
-            set_now_love('no_love')
-            set_now_star(-1)
-        }
-        init_show_song_data()
-    }
+    init_show_song_data()
+}
+function init_music_data() {
+    const json_data = getData('song_data', ex_data)
+    const dict_data = JSON.parse(json_data)
+    set_song_data(dict_data)
 }
 // 星星列表
 function StarList() {
     let stars = []
     for (let i = 0; i < 5; i++) {
-        let srt_data = i <= getData('now_star', -1) ? star_img : no_star_img
+        let srt_data = i <= now_star ? star_img : no_star_img
         stars.push(<img className="star" src={srt_data} alt="" key={i} vfx={i}></img>)
     }
     return stars
@@ -75,7 +74,7 @@ function Homepage() {
         init_color()
         init_change_album_id()
         init_music_visualization()
-        update_song_data()
+        init_music_data()
     }, [])
     return (
         <div className='homepage'>

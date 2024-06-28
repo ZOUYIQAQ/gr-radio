@@ -15,6 +15,8 @@ import {up_news_data} from './content/news/news.js'
 import {up_review_data} from './content/review/review.js'
 import {update_song_data} from './content/homepage/homepage.js'
 import {init_show_song_data} from './content/homepage/homepage.js'
+import {zero_star} from './content/homepage/star_vfx/star_vfx.js'
+import {zero_love} from './content/homepage/love_vfx/love_vfx.js'
 import check_updates from './check_updates/check_updates.js'
 const appInitialized = window.electron.appInitialized
 const onChangeMusicData = window.electron.onChangeMusicData
@@ -33,6 +35,8 @@ appInitialized(check_updates)
 appInitialized(init_row_count)
 appInitialized(init_show_song_data)
 appInitialized(onChangeMusicData, img_load_callback)
+appInitialized(onChangeMusicData, zero_star)
+appInitialized(onChangeMusicData, zero_love)
 appInitialized(onChangeMusicData, update_song_data)
 appInitialized(onChangeCollecteData, updata_collect_data)
 appInitialized(onUpdateMusicAlbumId, updata_album_data)

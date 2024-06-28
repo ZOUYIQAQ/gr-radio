@@ -27,6 +27,10 @@ function touch_love() {
 function leave_love() {
     change_love(is_love)
 }
+// 音乐改变心心清空
+export function zero_love() {
+    if (is_love) is_love = 'no_love'
+}
 // 点击心心特效
 async function click_love() {
     let result;
