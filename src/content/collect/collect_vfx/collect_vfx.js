@@ -9,7 +9,6 @@ export function init_row_count() {
     window.addEventListener('resize', () => {
         const collect_page = document.querySelector('#collect_page')
         if (window.location.href.match(/\/\w+?$/)[0] !== '/collect') return
-        console.log('页面在收藏')
         const rowCount = get_row_count()
         collect_page.style['grid-template-columns'] = `repeat(${rowCount}, auto)`
     })
