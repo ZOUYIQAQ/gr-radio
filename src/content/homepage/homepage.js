@@ -15,7 +15,6 @@ import love_img from '../../assets/img/icons8-love-24.png'
 import no_love_img from '../../assets/img/icons8-nolove-24.png'
 const getData = window.electron.getData
 const saveData = window.electron.saveData
-let now_star, now_love
 let set_now_love, set_now_star
 let song_data, set_song_data
 const ex_data = JSON.stringify({
@@ -32,14 +31,15 @@ export function init_show_song_data() {
 }
 // 更新音乐数据
 export function update_song_data() {
-    if (!set_song_data) return
+    init_show_song_data()
+    if (!set_song_data) {console.log('set_song_data 未初始化')
+        return}
     console.log('更新音乐数据')
     const json_data = getData('song_data', ex_data)
     const dict_data = JSON.parse(json_data)
     set_song_data(dict_data)
     set_now_star(-1)
     set_now_love('no_love')
-    init_show_song_data()
 }
 function init_music_data() {
     const json_data = getData('song_data', ex_data)
@@ -47,10 +47,10 @@ function init_music_data() {
     set_song_data(dict_data)
 }
 // 星星列表
-function StarList() {
+function StarList({now_star}) {
     let stars = []
     for (let i = 0; i < 5; i++) {
-        let srt_data = i <= now_star ? star_img : no_star_img
+        let srt_data = (i <= now_star) ? star_img : no_star_img
         stars.push(<img className="star" src={srt_data} alt="" key={i} vfx={i}></img>)
     }
     return stars
@@ -60,10 +60,8 @@ function Homepage() {
     song_data = _song_data
     set_song_data = _set_song_data
     const [_now_star, _set_now_star] = useState(getData('now_star', -1))
-    now_star = _now_star
     set_now_star = _set_now_star
     const [_now_love, _set_now_love] = useState(getData('is_love', 'no_love'))
-    now_love = _now_love
     set_now_love = _set_now_love
     // 页面初始化
     useEffect(() => {
@@ -97,11 +95,11 @@ function Homepage() {
                     <p className='inf_text' id="publisher">{song_data.circle}</p>
                     {/* <!-- 星星 --> */}
                     <div id="star_list">
-                        <StarList />
+                        <StarList now_star={_now_star} />
                     </div>
                     {/* <!-- 心心 --> */}
                     <div id="love_div">
-                        <img className="love" src={now_love === 'love' ? love_img : no_love_img} alt=""></img>
+                        <img className="love" src={_now_love === 'love' ? love_img : no_love_img} alt=""></img>
                     </div>
                 </div>
             </div>

@@ -14,6 +14,9 @@ function MinWin() {
 // 最大化窗口
 function MaxWin() {
     const win_ico = document.querySelector('#max > img')
+    if (!win_ico){
+        console.log('未找到窗口图标元素')
+    }
     if (isMaximized('mainWindow')){
         win_ico.src = big_window_png
     }else{

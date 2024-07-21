@@ -92,7 +92,7 @@ async function analyze(html_text) {
     // 制作团队
     album_data['production_team'] = production_team
     // 专辑封面
-    album_data['cover_url'] = cover
+    album_data['cover_url'] = cover ? cover : ''
     // 歌曲基础信息大杂烩
     for (let data of other_datas) {
         let [key, value] = data.split(': ')

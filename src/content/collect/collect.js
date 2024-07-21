@@ -34,7 +34,7 @@ function CollectPage() {
                 <div key={index} className='exterior_box'>
                     <div className="song_data"  onClick={()=>{album_id_change(item.url)}}>
                         <div className='cover_data_box'>
-                            <img className='song_cover' src={item.img}></img>
+                            <img className='song_cover' src={item?.img} alt=''></img>
                             <div className='song_datas'>
                                 <div className='song_name'>{item.title}</div>
                                 <div className='song_singer'>{item.author}</div>

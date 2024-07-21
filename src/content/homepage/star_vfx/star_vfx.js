@@ -8,6 +8,10 @@ let now_star = -1
 function star_light(_num) {
     const num = parseInt(_num)
     const star_list = document.querySelectorAll('.star')
+    if (!star_list) {
+        console.log('没有星星')
+        return
+    }
     for (const star of star_list) {
         const star_vfx = star.getAttribute('vfx')
         if (star_vfx <= num) star.src = star_img
@@ -25,7 +29,10 @@ function leave_star(event) {
 }
 // 更新音乐后星星归零
 export function zero_star() {
-    if (now_star) now_star = -1
+    if (now_star) {
+        now_star = -1
+        star_light(now_star)
+    }
 }
 // 点击星星回调函数
 async function click_star(event) {

@@ -13,7 +13,7 @@ function ReviewList({data_list}) {
     if (data_list.length === 0) return <div>空空如也</div>
     return data_list.map((item, index) => (
         <div key={index} className='news_item' onClick={()=>{if (!item.link) openLink(item.linke); else window.tips('找不到链接'+item.linke)}}>
-            <img src={item.img_url} className='background'></img>
+            <img src={item.img_url} alt='' className='background'></img>
             <img className='news_img' src={item.img_url} alt=''></img>
             <div className='news_text'>
                 <div className='news_title'>{item.title}</div>

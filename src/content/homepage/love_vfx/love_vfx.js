@@ -7,6 +7,7 @@ let is_love = 'no_love'
 // 改变心心状态
 function change_love(mode) {
     const love = document.querySelector('.love')
+    if (!love) return
     switch (mode) {
         case 'love':
             love.src = love_img
@@ -29,7 +30,10 @@ function leave_love() {
 }
 // 音乐改变心心清空
 export function zero_love() {
-    if (is_love) is_love = 'no_love'
+    if (is_love) {
+        is_love = 'no_love'
+        change_love(is_love)
+    }
 }
 // 点击心心特效
 async function click_love() {

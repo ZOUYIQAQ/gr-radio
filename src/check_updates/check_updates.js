@@ -26,7 +26,10 @@ export default async function check_updates(msg=false) {
     const now_version = getNowVersion()
     const last_version = await get_latest_version()
     console.log('now_version: ' + now_version + '\n', 'last_version: ' + last_version)
-    if (!last_version) return
+    if (!last_version) {
+        if (msg) window.tips('获取最新版本失败')
+        return
+    }
     if (last_version !== now_version) window.tips('有新版本可用, 请前往github下载最新版本')
     if (msg && last_version === now_version) window.tips('已是最新版本')
 }
