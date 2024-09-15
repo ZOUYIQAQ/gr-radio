@@ -37,7 +37,8 @@ async function play_control_leave() {
     play_text_doc.setAttribute('class', '')
 }
 // 鼠标按下函数
-async function play_control_down() {
+async function play_control_down(event) {
+    if (event.button !== 0) return
     is_down = true
     const play_text = play_control.innerText
     play_control.setAttribute('class', 'show')
@@ -52,7 +53,8 @@ async function play_control_down() {
     play_text_doc.setAttribute('class', 'super_big_text')
 }
 // 鼠标松开函数
-async function play_control_up() {
+async function play_control_up(event) {
+    if (event.button !== 0) return
     is_down = false
     await new Promise(resolve => setTimeout(resolve, 150))
     const play_text = play_control.innerText
