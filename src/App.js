@@ -18,6 +18,7 @@ import {init_show_song_data} from './content/homepage/homepage.js'
 import {zero_star} from './content/homepage/star_vfx/star_vfx.js'
 import {zero_love} from './content/homepage/love_vfx/love_vfx.js'
 import check_updates from './check_updates/check_updates.js'
+import cookieHeartbeat from './content/tools_list/login/cookie_heartbeat.js'
 const appInitialized = window.electron.appInitialized
 const onChangeMusicData = window.electron.onChangeMusicData
 const onChangeCollecteData = window.electron.onChangeCollecteData
@@ -42,6 +43,7 @@ appInitialized(onChangeCollecteData, updata_collect_data)
 appInitialized(onUpdateMusicAlbumId, updata_album_data)
 appInitialized(onUpdataNewsData, up_news_data)
 appInitialized(onUpdataReviewData, up_review_data)
+appInitialized(cookieHeartbeat)
 function App() {
   return (
     <Router>
